@@ -1,0 +1,120 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+  info ["SLAM test environment"]
+  title "Mecanum arena"
+  basicTimeStep 20
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [5, 0, 0.4]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [1, 0]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [5, 0, 0.4]
+      frictionRotation 0.9648 0
+      bounce 0
+      forceDependentSlip [1, 0]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.014564470588340846 -0.9772074292040077 -0.2117864880132243 2.9631031837915978
+  position -0.509069951657535 1.4398634654090572 -1.9757769554408724
+}
+Background {
+  skyColor [
+    0.678431 0.847059 0.901961
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.8
+  direction -0.5 -2 -0.5
+  intensity 0.3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.5 -0.5 0.5
+  intensity 0.5
+}
+RectangleArena {
+  translation -1.5305898073046627 0 -0.062043345059158206
+  floorSize 50 50
+  floorAppearance SandyGround {
+    colorOverride 0.5 0.5 0.5
+  }
+  wallColor 1 1 1
+}
+Wall {
+  translation -3.841842289353953 2.1316282072803006e-14 -0.7936861240426292
+  name "wall3(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.6735327440080767 -1.2434497875801753e-14 -1.7866442718663098
+  rotation 0 1 0 1.57
+  name "wall(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.8085184818067432 -7.105427357601002e-15 2.3123954893349596
+  rotation 0 1 0 1.57
+  name "wall(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.6477941112354455 5.435651928564766e-13 -1.8705001238665622
+  rotation 0 1 0 1.57
+  name "wall(4)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.7515386631991765 0 2.317762809718726
+  rotation 0 1 0 1.57
+  name "wall(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3340559114057931 -1.2434497875801753e-14 -0.7730292578635369
+  name "wall3"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.823697764833236 -4.227729277772596e-13 1.2410597198414361
+  name "wall3(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3133083564869404 0 1.2438700072581248
+  name "wall3(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+TBA2 {
+  translation -0.864461 0.12 -0.0442204
+}

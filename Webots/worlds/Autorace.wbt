@@ -1,0 +1,562 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+  info [
+    "SLAM test environment"
+  ]
+  title "TB3"
+  basicTimeStep 20
+}
+Viewpoint {
+  orientation 0.23982964092310993 0.9174899513222676 0.3173230728411581 4.308487491983156
+  position -7.941550934892339 6.70704073137245 -3.2994319393071443
+}
+Background {
+  skyColor [
+    0.678431 0.847059 0.901961
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.8
+  direction -0.5 -2 -0.5
+  intensity 0.3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.5 -0.5 0.5
+  intensity 0.5
+}
+RectangleArena {
+  translation -1.5 0 1
+  floorSize 5 5
+  floorAppearance SandyGround {colorOverride 0.3 0.3 0.3}  
+  wallHeight 0.15
+}
+tile1 {
+  translation 0 0 0
+  name "t0"
+}
+tile1 {
+  translation 0 0 0.5
+  textureUrl [
+    "textures/start.jpg"
+  ]
+}
+tile1 {
+  translation 0 0 -0.5
+  name "t2"
+}
+tileleft {
+  translation 0 0 -1
+  name "t4"
+}
+tile1 {
+  translation -0.5 0 -1
+  rotation 0 1 0 1.57
+  name "t5"
+}
+tileleft {
+  translation -1 0 -1
+  rotation 0 1 0 1.57
+  name "t6"
+}
+tileright3 {
+  translation -1 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t27"
+}
+tileleft {
+  translation -1.5 0 -0.5
+  rotation 0 1 0 1.57
+  name "t61"
+}
+tileleft {
+  translation -1.5 0 0
+  rotation 0 1 0 3.14
+  name "t7"
+}
+turnsign {
+  translation -1 0 -0.19
+  name "ts4"
+  textureUrl [
+    "textures/noentry.jpg"
+  ]
+}
+tileright {
+  translation -0.5 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t8"
+}
+tileright {
+  translation -0.5 0 0
+  rotation 0 1 0 3.14
+  name "t9"
+}
+tile1 {
+  translation -1.5 0 0.5
+  rotation 0 1 0 1.57
+  name "t10"
+}
+tileleft3 {
+  translation -1 0 0
+  rotation 0 1 0 1.57
+  name "t105"
+}
+tileright {
+  translation -1 0 0.5
+  rotation 0 1 0 3.14
+  name "t11"
+}
+tileright {
+  translation -2 0 0.5
+  rotation 0 1 0 1.57
+  name "t13"
+}
+tile1 {
+  translation -2 0 0
+  name "t14"
+}
+tile1 {
+  translation -2 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t_wa"
+  textureUrl [
+    "textures/tcurve.jpg"
+  ]
+}
+tile1 {
+  translation -2 0 -1
+  name "t_w0"
+  textureUrl [
+    "textures/w_curve.jpg"
+  ]
+}
+tile1 {
+  translation -2.5 0 -1
+  rotation 0 1 0 1.57
+  name "t_w1"
+  textureUrl [
+    "textures/s_wide.jpg"
+  ]
+}
+tile1 {
+  translation -3 0 -1
+  rotation 0 1 0 1.57
+  name "t_W2"
+  textureUrl [
+    "textures/s_wide.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 -1
+  rotation 0 1 0 1.57
+  name "t_w3"
+  textureUrl [
+    "textures/w_curve.jpg"
+  ]
+}
+tile1 {
+  translation -2.5 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t_w4"
+  textureUrl [
+    "textures/s_wide2.jpg"
+  ]
+}
+tile1 {
+  translation -3 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t_W5"
+  textureUrl [
+    "textures/s_wide2.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t_wb"
+  textureUrl [
+    "textures/tcurve2.jpg"
+  ]
+}
+GenericBox {
+  translation -0.005143159951264423 0.00988887295686422 1.3342992388357915
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -0.778077926664451 0.009888872956865108 1.0124969963741235
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1(4)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -1.463224951620426 0.009888872956866884 1.7491784330332936
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1(6)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -0.2793318519912601 0.009888872956918399 2.4896980294102784
+  rotation -0.06041665907983867 -0.013858709267167701 0.9980770328401904 0.0007231630176495701
+  name "block1(2)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -2.300003334162662 0.009888872956865996 -0.7599999334283181
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1(1)"
+  size 0.1 0.3 0.2
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -2.749999999250044 0.009877363151756052 -1.009999999999704
+  rotation -0.0003984891134933665 2.8997620606544596e-07 0.999999920603168 3.9639255649801416e-07
+  name "block2"
+  size 0.1 0.3 0.2
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -3.199999999999992 0.009875405198151055 -0.7769996961659051
+  rotation 1 3.938771833821115e-09 -7.11637167811243e-12 -0.00014503533322218545
+  name "block3"
+  size 0.1 0.3 0.2
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+
+tile1 {
+  translation -2.5 0 0
+  rotation 0 1 0 -1.57
+  name "t_h1"
+  textureUrl [
+    "textures/plot1.jpg"
+  ]
+}
+tile1 {
+  translation -2.5 0 0.5
+  rotation 0 1 0 -1.57
+  name "t_h2"
+  textureUrl [
+    "textures/plot2.jpg"
+  ]
+}
+tile1 {
+  translation -3 0 0
+  rotation 0 1 0 -1.57
+  name "t_h3"
+  textureUrl [
+    "textures/straight_half.jpg"
+  ]
+}
+tile1 {
+  translation -3 0 0.5
+  rotation 0 1 0 1.57
+  name "t_h4"
+  textureUrl [
+    "textures/straight_half.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 0
+  rotation 0 1 0 -1.57
+  name "t_p1"
+  textureUrl [
+    "textures/parklot_curve1.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 0.5
+  rotation 0 1 0 -1.57
+  name "t_p2"
+  textureUrl [
+    "textures/parklot_curve2.jpg"
+  ]
+}
+turnsign {
+  translation -3.7 0 0.2
+  name "ts1"
+  rotation 0 1 0 -1.57
+  textureUrl [
+    "textures/repair.jpg"
+  ]
+}
+turnsign {
+  translation -1.75 0 2.25
+  name "ts5"
+  textureUrl [
+    "textures/tunnel.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 1
+  rotation 0 1 0 -1.57
+  name "t_p3"
+  textureUrl [
+    "textures/bumpy1.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 1.5
+  rotation 0 1 0 -1.57
+  name "t_p4"
+  textureUrl [
+    "textures/bumpy3.jpg"
+  ]
+}
+tile1 {
+  translation -3.5 0 2
+  rotation 0 1 0 -1.57
+  name "t_p5"
+  textureUrl [
+    "textures/bumpy2.jpg"
+  ]
+}
+tile1 {
+  translation -2 0 2.5
+  rotation 0 1 0 -1.57
+  name "t31"
+}
+tileleft {
+  translation -2.5 0 2.5
+  rotation 0 1 0 3.14
+  name "t32"
+}
+tileleft {
+  translation -2.5 0 2
+  rotation 0 1 0 1.57
+  name "t33"
+}
+tileright {
+  translation -2 0 2
+  rotation 0 1 0 3.14
+  name "t34"
+}
+tile1 {
+  translation -2 0 1.5
+  rotation 0 1 0 3.14
+  name "t35"
+}
+tileright {
+  translation -2 0 1
+  rotation 0 1 0 -1.57
+  name "t36"
+}
+tile1 {
+  translation -2.5 0 1
+  rotation 0 1 0 -1.57
+  name "t37"
+}
+tileright {
+  translation -3 0 1
+  name "t38"
+}
+tile1 {
+  translation -3 0 1.5
+  name "t39"
+}
+tile1 {
+  translation -3 0 2
+  name "t40"
+}
+tileleft {
+  translation -3 0 2.5
+  rotation 0 1 0 -1.57
+  name "t401"
+}
+tileleft {
+  translation -3.5 0 2.5
+  rotation 0 1 0 3.14
+  name "t402"
+}
+tile0 {
+  translation 0 0 1
+  name "t41"
+}
+tile0 {
+  translation 0 0 1.5
+  name "t42"
+}
+tile0 {
+  translation 0 0 2
+  name "t43"
+}
+GenericBox {
+  translation -1.4960801534967663 0.00988887295686422 1.016494320123534
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1(5)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+tile0 {
+  translation 0 0 2.5
+  name "t44"
+}
+tile0 {
+  translation -0.5 0 1
+  name "t45"
+}
+tile0 {
+  translation -0.5 0 1.5
+  name "t46"
+}
+tile0 {
+  translation -0.5 0 2
+  name "t47"
+}
+tile0 {
+  translation -0.5 0 2.5
+  name "t48"
+}
+tile0 {
+  translation -1 0 1
+  name "t49"
+}
+tile0 {
+  translation -1 0 1.5
+  name "t50"
+}
+tile0 {
+  translation -1 0 2
+  name "t51"
+}
+GenericBox {
+  translation -0.7741463421703594 0.3098888729568643 1.7781421760336154
+  rotation -5.011053329199131e-06 2.1845547671375995e-05 0.9999999997488308 3.1423144163988765
+  name "block1(9)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -1.1405726751765277 0.009888872956867772 2.492368679372886
+  rotation 0.06041665907983867 0.013858709267167703 -0.9980770328401906 -0.0007231630176710829
+  name "block1(8)"
+  size 0.3 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+tile0 {
+  translation -1 0 2.5
+  name "t52"
+}
+tile0 {
+  translation -1.5 0 1
+  name "t53"
+}
+tile0 {
+  translation -1.5 0 1.5
+  name "t54"
+}
+tile0 {
+  translation -1.5 0 2
+  name "t55"
+}
+tile0 {
+  translation -1.5 0 2.5
+  name "t56"
+}
+Wall {
+  translation -0.75 0 2.7
+  rotation 0 1 0 1.57
+  name "wall(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation 0.2 0 1.75
+  name "wall3"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation -0.95 0 0.8
+  rotation 0 1 0 1.57
+  name "wall(4)"
+  size 0.1 0.5 1.5
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation -1.7 0 1.57
+  name "wall5"
+  size 0.1 0.5 1.5
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+TB3 {
+  translation 0 0 0.4
+  controller "n1bot"
+  controllerArgs "0"
+}
+TB3 {
+  translation -2.5198900829780806 0.009877363151756052 -0.048004481606876315
+  controller "void"
+  name "Parked"
+}
+trafficlight {
+  translation 0.18 0.1 -0.1
+  rotation 0 1 0 -1.57
+  controller "trafficlight"
+  name "tlight"
+}
+IRsensor {
+  translation 0.4 0.1 0.3
+  rotation 0 1 0 3.14
+  controller "sensor"
+  controllerArgs "1"
+  name "sensor1"
+}
+IRsensor {
+  translation -0.3 0.1 -1.3
+  rotation 0 1 0 -1.57
+  controller "sensor"
+  controllerArgs "2"
+  name "sensor2"
+}
+turnsign_auto {
+  translation -1 0 -0.32
+  rotation 0 1 0 -1.57
+  name "ts2"
+  controller "turnsign"
+}
+
+IRsensor {
+  translation -2.65 0.1 1.9
+  rotation 0 1 0 3.14
+  controller "sensor"
+  controllerArgs "3"
+  name "sensor3"
+}
+gate {
+  translation -2.85 0 1.3
+  rotation 0 1 0 3.14
+  controller "gate"
+}

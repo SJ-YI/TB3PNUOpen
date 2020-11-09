@@ -1,0 +1,8 @@
+prefix=/home/sj/Desktop/TB3PNUOpen/catkin_ws/install
+
+Name: pnu_tb3open_launch
+Description: Description of pnu_tb3open_launch
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

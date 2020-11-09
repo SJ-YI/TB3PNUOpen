@@ -1,0 +1,110 @@
+# VRML_SIM V7.4.3 utf8
+PROTO turnsign_auto [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFString   name        "ts"
+  field SFString controller "void"
+  field MFString controllerArgs ""
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  name IS name
+  controller IS controller
+  controllerArgs IS controllerArgs
+  children [
+    Receiver {
+      name "receiver"
+      channel 11
+    }
+
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0.04 0
+        minStop -1.6
+        maxStop 0.1
+      }
+      device [
+        RotationalMotor {
+           name "jointright"
+           maxVelocity 2
+           maxTorque 0.3
+        }
+      ]
+      endPoint Solid{
+        translation 0 0.12 0.05
+        rotation 0 1 0 0
+        name "shelfdoor1"
+        physics Physics {density -1 mass 0.1}
+        boundingObject Box {size 0.01 0.01 0.01}
+        children[
+          Shape {
+            geometry Box {size 0.003 0.08 0.08}
+            appearance PBRAppearance {
+              metalness 0
+              roughness 0.75
+              baseColorMap ImageTexture {url "textures/rturn.jpg"}
+            }
+          }
+        ]
+
+      }
+    }
+
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0.04 0
+        minStop -1.6
+        maxStop 0.1
+      }
+      device [
+        RotationalMotor {
+           name "jointleft"
+           maxVelocity 2
+           maxTorque 0.2
+        }
+      ]
+      endPoint Solid{
+        translation 0 0.12 -0.05
+        rotation 0 1 0 0
+        name "shelfdoor2"
+        physics Physics {density -1 mass 0.1}
+        boundingObject Box {size 0.01 0.01 0.01}
+        children[
+          Shape {
+            geometry Box {size 0.003 0.08 0.08}
+            appearance PBRAppearance {
+              metalness 0
+              roughness 0.75
+              baseColorMap ImageTexture {url "textures/lturn.jpg"}
+            }
+          }
+        ]
+
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+  ]
+
+  boundingObject Transform{
+    translation 0 0.01 0
+    children[Box {size 0.1 0.02 0.2}]
+  }
+  physics Physics {
+    density -1
+    mass 10.0
+  }
+}
+}

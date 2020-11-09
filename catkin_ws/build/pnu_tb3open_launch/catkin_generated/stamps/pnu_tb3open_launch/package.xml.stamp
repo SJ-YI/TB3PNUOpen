@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pnu_tb3open_launch</name>
+  <version>0.0.0</version>
+  <description>The pnu_tb3open_launch package</description>
+  <maintainer email="sj@pnu.ac.kr">sj</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.4
+protoFileHash: e1e7d490af6eeef5ab792ca3484b3505
+containsDevices: 1
+baseType: Solid
+slotType: 
+parameters: translation,rotation,width,height,widthRGB,heightRGB,fieldOfView,fieldOfViewRGB,maxRange,colorNoise,rangeNoise,name,windowPosition,mass,pixelSize
+tags: 
+license: 
+licenseUrl: 
+documentationUrl: 
+info: Microsoft\sKinect2\smodel\sbased\son\sKinect\smodel\n

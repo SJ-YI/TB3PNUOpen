@@ -1,0 +1,44 @@
+#VRML_SIM R2019a utf8
+PROTO GenericCan [
+  field SFVec3f translation 0 0.06 0
+  field SFRotation rotation 0 1 0 0
+  field SFColor color 0.6 0.6 0.6
+  field SFFloat mass 0.1
+  field SFFloat radius 0.038
+  field SFFloat height 0.12
+  field SFString customData      ""
+  field SFString name "can"
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    name IS name
+    customData IS customData
+    controllerArgs IS controllerArgs
+
+    name IS name
+    children [
+      Shape {
+        appearance DEF POS_APP Appearance {
+          material Material {diffuseColor IS color specularColor 0.5 0.5 0.5}
+        }
+        geometry Cylinder {
+          height IS height
+          radius IS radius
+          subdivision 20
+        }
+      } #shape
+    ] #children
+  boundingObject Cylinder {
+    height IS height
+    radius IS radius
+    subdivision 20
+  }
+  physics Physics {
+    density -1
+    mass IS mass
+  }
+}
+}

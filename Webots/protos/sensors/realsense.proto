@@ -1,0 +1,61 @@
+#VRML_SIM V7.2.5 utf8
+# Microsoft Kinect2 model based on Kinect model
+
+PROTO realsense [
+  field SFVec3f translation 0 0.02 0
+  field SFRotation rotation 0 1 0 0
+  field SFInt32 width 256 #256 #512
+  field SFInt32 height 212 #212 #424
+  field SFInt32 widthRGB 960 #1920
+  field SFInt32 heightRGB 540 #1080
+  field SFFloat fieldOfView 1.2113 #69.4 horizontal for D415
+  field SFFloat fieldOfViewRGB 1.2113
+  #field SFFloat fieldOfView 1.2217 #70 horizontal
+#  field SFFloat fieldOfViewRGB 1.46778 #84.1 horizontal
+  #field SFFloat fieldOfViewRGB 1.38
+  field SFFloat maxRange 5
+  field SFFloat colorNoise 0.0
+  field SFFloat rangeNoise 0.0
+  field SFString name "kinect2"
+  field SFVec2f windowPosition 0 0
+  field SFFloat mass 0.5
+	field SFFloat pixelSize 0.5
+]
+{
+Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    Camera {
+      #translation 0.0127 0 0
+      translation 0 0 0
+      name %{= '"' .. fields.name.value .. "RGB" .. '"' }%
+      fieldOfView IS fieldOfViewRGB
+      width IS widthRGB
+      height IS heightRGB
+      noise IS colorNoise
+    }
+    RangeFinder {
+      #translation -0.0127 0 0
+      translation 0 0 0
+      name %{= '"' .. fields.name.value .. "D" .. '"' }%
+      fieldOfView IS fieldOfView
+      width IS width
+      height IS height
+      maxRange IS maxRange
+      noise IS rangeNoise
+    }
+    Shape {
+      appearance Appearance {
+        material Material {
+          specularColor 1.0 1.0 1.0
+        }
+#        texture ImageTexture {url ["textures/kinect.png"]}
+      }
+      geometry Box {size 0.10 0.02 0.02}
+    }
+  ]
+  boundingObject Box {size 0.10 0.02 0.02}
+  physics Physics {density -1 mass IS mass}
+}
+}

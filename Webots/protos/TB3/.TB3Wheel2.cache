@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.4
+protoFileHash: dfc810edc04a14de816e716260af5348
+containsDevices: 1
+baseType: HingeJoint
+slotType: 
+parameters: translation,anchor,rotation,solidname,name,sensorName,max_velocity
+tags: hidden
+license: 
+licenseUrl: 
+documentationUrl: 
+info: omnidirectionnal\swheels\swith\s2D\scoulomb\sfriction\n

@@ -1,0 +1,33 @@
+PROTO HandBase [
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation 0.03 0 0
+        children[
+          Shape {
+            appearance DEF POS_APP Appearance {
+              material Material {diffuseColor 0.5 0.5 0.5 specularColor 0.5 0.5 0.5}
+            }
+            geometry Box { size 0.03 0.08 0.03}
+          }
+        ]
+      }
+      Transform{
+        translation 0 0 0
+        children[
+          Shape {
+            appearance USE POS_APP
+            geometry Cylinder {height 0.03 radius 0.015}
+          }
+        ]
+      }
+
+    ]
+  }
+}

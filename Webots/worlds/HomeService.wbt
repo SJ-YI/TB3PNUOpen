@@ -1,0 +1,294 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  info [
+    "SLAM test environment"
+  ]
+  title "Mecanum arena"
+  basicTimeStep 20
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        5, 0, 0.4
+      ]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [
+        1, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        5, 0, 0.4
+      ]
+      frictionRotation 0.9648 0
+      bounce 0
+      forceDependentSlip [
+        1, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.5157214201937296 -0.7716046847826149 -0.37236759683796894 1.4789500245362202
+  position -4.046908761843998 5.612652213160573 1.9546968453907518
+}
+Background {
+  skyColor [
+    0.678431 0.847059 0.901961
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.8
+  direction -0.5 -2 -0.5
+  intensity 0.3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.5 -0.5 0.5
+  intensity 0.5
+}
+DirectionalLight {
+  direction -0.5 -0.5 0.5
+  intensity 0.5
+}
+DirectionalLight {
+  direction 0.5 0.5 0.5
+  intensity 0.5
+}
+RectangleArena {
+  floorSize 5 5
+  floorAppearance SandyGround {
+    colorOverride 0.5 0.5 0.5
+  }
+  wallColor 1 1 1
+}
+Wall {
+  translation 0 0 1.525
+  name "wall(4)"
+  size 3 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0 0 -1.525
+  name "wall(1)"
+  size 3 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 1.525 0 0
+  rotation 0 1 0 1.57
+  name "wall3"
+  size 3 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -1.525 0 0
+  rotation 0 1 0 1.57
+  name "wall3(1)"
+  size 3 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0 0 1.125
+  rotation 0 1 0 1.57
+  name "wall_b1"
+  size 0.75 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation 0 0 -1.125
+  rotation 0 1 0 1.57
+  name "wall_b2"
+  size 0.75 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation 0.1625 0 0.75
+  name "wall_b3"
+  size 0.325 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation 0.1625 0 -0.75
+  name "wall_b4"
+  size 0.325 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation -1.3375 0 0
+  name "wall_b5"
+  size 0.325 0.2 0.05
+  appearance Roughcast {
+    colorOverride 0.3 0.3 0.3
+  }
+}
+Wall {
+  translation 1.4 0 0
+  rotation 0 1 0 1.57
+  name "itemstand"
+  size 1 0.2 0.2
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+  }
+}
+AprilTag9cm {
+  translation 1.29 0.1 -0.3
+  rotation 0 1 0 1.57
+  textureUrl [
+    "textures/a0.jpg"
+  ]
+  name "ar0"
+}
+AprilTag9cm {
+  translation 1.29 0.1 -0.1
+  rotation 0 1 0 1.57
+  textureUrl [
+    "textures/a1.jpg"
+  ]
+  name "ar1"
+}
+AprilTag9cm {
+  translation 1.29 0.1 0.1
+  rotation 0 1 0 1.57
+  textureUrl [
+    "textures/a2.jpg"
+  ]
+  name "ar2"
+}
+AprilTag9cm {
+  translation 1.29 0.1 0.3
+  rotation 0 1 0 1.57
+  textureUrl [
+    "textures/a3.jpg"
+  ]
+  name "ar3"
+}
+GenericCan {
+  translation 1.35 0.25 -0.3
+  color 1 0 0
+  height 0.1
+  name "can1"
+}
+GenericCan {
+  translation 1.35 0.25 -0.1
+  color 1 1 0
+  height 0.1
+  name "can2"
+}
+GenericCan {
+  translation 1.35 0.25 0.1
+  color 0 1 0
+  radius 0.02
+  height 0.1
+  name "can3"
+}
+GenericCan {
+  translation 1.35 0.25 0.3
+  color 0 0 1
+  radius 0.02
+  height 0.1
+  name "can4"
+}
+Wall {
+  translation 0.75 0 -1.3125
+  name "goal1"
+  size 0.375 0.2 0.375
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+  }
+}
+AprilTag9cm {
+  translation 0.75 0.1 -1.12
+  rotation 0 1 0 3.1415
+  textureUrl [
+    "textures/a4.jpg"
+  ]
+  name "ar4"
+}
+Wall {
+  translation 1 0 1.3125
+  name "goal2"
+  size 0.375 0.2 0.375
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+  }
+}
+AprilTag9cm {
+  translation 1 0.1 1.12
+  textureUrl [
+    "textures/a5.jpg"
+  ]
+  name "ar5"
+}
+Wall {
+  translation -1.3125 0 -1.3125
+  name "goal3"
+  size 0.375 0.2 0.375
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+  }
+}
+AprilTag9cm {
+  translation -1.12 0.1 -1.3125
+  rotation 0 1 0 -1.57
+  textureUrl [
+    "textures/a6.jpg"
+  ]
+  name "ar6"
+}
+AprilTag9cm {
+  translation -1.3125 0.1 -1.12
+  rotation 0 1 0 3.1415
+  textureUrl [
+    "textures/a6.jpg"
+  ]
+  name "ar6b"
+}
+Wall {
+  translation -1.3125 0 1.3125
+  name "goal4"
+  size 0.375 0.2 0.375
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+  }
+}
+AprilTag9cm {
+  translation -1.12 0.1 1.3125
+  rotation 0 1 0 -1.57
+  textureUrl [
+    "textures/a7.jpg"
+  ]
+  name "ar7"
+}
+AprilTag9cm {
+  translation -1.3125 0.1 1.12
+  textureUrl [
+    "textures/a7.jpg"
+  ]
+  name "ar7b"
+}
+TBA2 {
+  translation 0 0 0
+  rotation 0.5775484218729166 0.5768972339400333 0.5776048838647765 -2.0951577097212604
+}
+CeilingLight {
+  translation 0 1.55 0
+}

@@ -1,0 +1,247 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+  info [
+    "SLAM test environment"
+  ]
+  title "TB3"
+  basicTimeStep 20
+}
+Viewpoint {
+  orientation 0.010244660542558341 -0.6909409872900324 -0.7228385705073042 3.1482254442185655
+  position -2.6404268838676526 9.075478856907043 1.6257999188941392
+}
+Background {
+  skyColor [
+    0.678431 0.847059 0.901961
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.8
+  direction -0.5 -2 -0.5
+  intensity 0.3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.5 -0.5 0.5
+  intensity 0.5
+}
+RectangleArena {
+  translation -1.5305898073046627 0 -0.062043345059158206
+  floorSize 50 50
+  floorAppearance SandyGround {
+    colorOverride 0.5 0.5 0.5
+  }
+  wallColor 1 1 1
+}
+Wall {
+  translation -3.737134229346116 2.1316282072803006e-14 -0.7518008320841711
+  name "wall3(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.6735327440080767 -1.2434497875801753e-14 -1.7866442718663098
+  rotation 0 1 0 1.57
+  name "wall(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.8085184818067432 -7.105427357601002e-15 2.3123954893349596
+  rotation 0 1 0 1.57
+  name "wall(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -1.7286738117368723 5.435651928564766e-13 1.2293580137675844
+  rotation 0 1 0 1.57
+  name "wall(4)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.6704246570064712 5.435651928564766e-13 -1.813857311249174
+  rotation 0 1 0 1.57
+  name "wall(5)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.8015945964447543 0 2.3109757037879715
+  rotation 0 1 0 1.57
+  name "wall(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -1.722364360232478 -1.2434497875801753e-14 -0.6756184444679295
+  rotation 0 1 0 1.5707963220000003
+  name "wall3"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.764017655924267 -1.2434497875801753e-14 0.31020757547778943
+  rotation 0 1 0 1.5707963220000003
+  name "wall3(6)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.6707588495997401 -1.2434497875801753e-14 0.2753787275591125
+  name "wall3(5)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3340559114057931 -1.2434497875801753e-14 -0.7730292578635369
+  name "wall3(4)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.823697764833236 -4.227729277772596e-13 1.2410597198414361
+  name "wall3(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3133083564869404 0 1.2438700072581248
+  name "wall3(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -1.1208557400077175 -1.2434497875801753e-14 -0.2624116051067138
+  rotation 0 -1 0 5.497787165359173
+  name "wall3(6)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.344518930593882 -1.2434497875801753e-14 -0.09791462086968927
+  rotation 0 -1 0 5.497787165359173
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.9126112591566629 -1.2434497875801753e-14 0.032758646699866945
+  rotation 0 -1 0 4.712389004359173
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.357078804709598 -1.2434497875801753e-14 0.7247626299334475
+  rotation 0 -1 0 3.9269908433591727
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.13564147259854473 -1.2434497875801753e-14 1.8363587855161991
+  rotation 0 -1 0 3.9269908433591727
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.2803469627425272 -1.2434497875801753e-14 -1.3371107912272102
+  rotation 0 -1 0 3.9269908433591727
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -1.0999158016657362 -1.2434497875801753e-14 0.7826865610661249
+  rotation 0 -1 0 3.9269908433591727
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.4210334975894665 -1.2434497875801753e-14 1.9239053516735067
+  rotation 0 -1 0 5.497787165359173
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.10621297391474122 -1.2434497875801753e-14 -1.3804845543106152
+  rotation 0 -1 0 5.497787165359173
+  name "wall3(7)"
+  size 0.1 0.5 1
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+GenericBox {
+  translation -1.708008030656734 0.009877363151756052 1.4186618353692784
+  rotation -0.0003984891134933665 2.8997620606544596e-07 0.999999920603168 3.9639255649801416e-07
+  name "block2"
+  size 0.1 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -0.9894869675890188 0.009877363151756052 2.1508221643195
+  rotation -0.00039848911349336637 2.899762060654459e-07 0.999999920603168 3.964941112890867e-07
+  name "block2(1)"
+  size 0.1 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+GenericBox {
+  translation -2.2737120576990915 0.009877363151756052 2.101095386872624
+  rotation -0.0003984891134933665 2.8997620606544596e-07 0.999999920603168 3.9639255649801416e-07
+  name "block2(2)"
+  size 0.1 0.3 0.3
+  textureUrl [
+    "textures/block.jpg"
+  ]
+}
+TB3 {}

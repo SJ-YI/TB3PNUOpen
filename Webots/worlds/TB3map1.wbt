@@ -1,0 +1,329 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+  info [
+    "SLAM test environment"
+  ]
+  title "TB3"
+  basicTimeStep 20
+}
+Viewpoint {
+  orientation 0.54985760527085 -0.5643999064143492 -0.6157185717235429 4.060174425942502
+  position -2.211621258990839 15.829301864860598 1.444520276401283
+}
+Background {
+  skyColor [
+    0.678431 0.847059 0.901961
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.8
+  direction -0.5 -2 -0.5
+  intensity 0.3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction 0.5 -0.5 0.5
+  intensity 0.5
+}
+RectangleArena {
+  translation -1.5305898073046627 0 -0.062043345059158206
+  floorSize 50 50
+  floorAppearance SandyGround {
+    colorOverride 0.5 0.5 0.5
+  }
+  wallColor 1 1 1
+}
+Wall {
+  translation -3.841842289353953 2.1316282072803006e-14 -0.7936861240426292
+  name "wall3(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+tileleft {
+  translation -1.5 0 2
+  rotation 0 1 0 -1.57
+  name "t4a"
+}
+tileright {
+  translation -1.5 0 1.5
+  name "t4b"
+}
+tileright {
+  translation -1 0 1.5
+  rotation 0 1 0 -1.57
+  name "t4c"
+}
+tileleft {
+  translation -1 0 2
+  rotation 0 1 0 -3.14
+  name "t4d"
+}
+tileleft {
+  translation -0.5 0 2
+  rotation 0 1 0 -1.57
+  name "t4e"
+}
+tileright {
+  translation -0.5 0 1.5
+  name "t4f"
+}
+tileleft {
+  translation 0 0 1.5
+  rotation 0 1 0 -1.57
+  name "t4g"
+}
+tile1 {
+  translation 0 0 1
+  name "t2a"
+}
+tile1 {
+  translation 0 0 0.5
+  name "t2"
+}
+tile1 {
+}
+tile1 {
+  translation 0 0 -0.5
+  name "t2c"
+}
+tile1 {
+  translation 0 0 -1
+  name "t3"
+}
+tileleft {
+  translation 0 0 -1.5
+  name "t4"
+}
+tile1 {
+  translation -0.5 0 -1.5
+  rotation 0 1 0 1.57
+  name "t5"
+}
+tileleft {
+  translation -1 0 -1.5
+  rotation 0 1 0 1.57
+  name "t6"
+}
+tile1 {
+  translation -1 0 -1
+  rotation 0 1 0 3.14
+  name "t7"
+}
+tileleft {
+  translation -1 0 -0.5
+  rotation 0 1 0 3.14
+  name "t8"
+}
+tileright {
+  translation -0.5 0 -0.5
+  rotation 0 1 0 -1.57
+  name "t9"
+}
+tileright {
+  translation -0.5 0 0
+  rotation 0 1 0 -3.14
+  name "t10"
+}
+tileright {
+  translation -0.5 0 0
+  rotation 0 1 0 -3.14
+  name "t10(2)"
+}
+tileright {
+  translation -0.5 0 0
+  rotation 0 1 0 -3.14
+  name "t10(1)"
+}
+tile1 {
+  translation -1 0 0
+  rotation 0 1 0 1.57
+  name "t11"
+}
+tileright {
+  translation -1.5 0 0
+  rotation 0 1 0 1.57
+  name "t12"
+}
+tile1 {
+  translation -1.5 0 -0.5
+  name "t13"
+}
+tile1 {
+  translation -1.5 0 -1
+  name "t14"
+}
+tileleft {
+  translation -1.5 0 -1.5
+  name "t15"
+}
+tile1 {
+  translation -2 0 -1.5
+  rotation 0 1 0 1.57
+  name "t16"
+}
+tile1 {
+  translation -2.5 0 -1.5
+  rotation 0 1 0 1.57
+  name "t17"
+}
+tileleft {
+  translation -3 0 -1.5
+  rotation 0 1 0 1.57
+  name "t18"
+}
+tile1 {
+  translation -3 0 -1
+  rotation 0 1 0 3.14
+  name "t19"
+}
+tile1 {
+  translation -3 0 -0.5
+  rotation 0 1 0 3.14
+  name "t20"
+}
+tileright {
+  translation -3 0 0
+  rotation 0 1 0 3.14
+  name "t21"
+}
+tileleft {
+  translation -3.5 0 0
+  rotation 0 1 0 1.57
+  name "t22"
+}
+tile1 {
+  translation -3.5 0 0.5
+  rotation 0 1 0 3.14
+  name "t23"
+}
+tile1 {
+  translation -3.5 0 1
+  rotation 0 1 0 3.14
+  name "t24"
+}
+tile1 {
+  translation -3.5 0 1.5
+  rotation 0 1 0 3.14
+  name "t25"
+}
+tileleft {
+  translation -3.5 0 2
+  rotation 0 1 0 3.14
+  name "t26"
+}
+tileleft3 {
+  translation -3 0 2
+  rotation 0 1 0 -1.57
+  name "t27"
+}
+tile1 {
+  translation -3 0 1.5
+  name "t28"
+}
+tile1 {
+  translation -3 0 1
+  name "t29"
+}
+tileright {
+  translation -3 0 0.5
+  name "t30"
+}
+tile1 {
+  translation -2.5 0 0.5
+  rotation 0 1 0 -1.57
+  name "t31"
+}
+tileright {
+  translation -2 0 0.5
+  rotation 0 1 0 -1.57
+  name "t32"
+}
+tile1 {
+  translation -2 0 1.5
+  rotation 0 1 0 3.14
+  name "t33"
+}
+tile1 {
+  translation -2 0 1
+  rotation 0 1 0 3.14
+  name "t34"
+}
+tile1 {
+  translation -2.5 0 2
+  rotation 0 1 0 -1.57
+  name "t35"
+  textureUrl [
+    "textures/straight2.jpg"
+  ]
+}
+tileright3 {
+  translation -2 0 2
+  rotation 0 1 0 -1.57
+  name "t36"
+}
+Wall {
+  translation -2.6735327440080767 -1.2434497875801753e-14 -1.7866442718663098
+  rotation 0 1 0 1.57
+  name "wall(2)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -2.8085184818067432 -7.105427357601002e-15 2.3123954893349596
+  rotation 0 1 0 1.57
+  name "wall(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.6477941112354455 5.435651928564766e-13 -1.8705001238665622
+  rotation 0 1 0 1.57
+  name "wall(4)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -0.7515386631991765 0 2.317762809718726
+  rotation 0 1 0 1.57
+  name "wall(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3340559114057931 -1.2434497875801753e-14 -0.7730292578635369
+  name "wall3"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation -3.823697764833236 -4.227729277772596e-13 1.2410597198414361
+  name "wall3(1)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+Wall {
+  translation 0.3133083564869404 0 1.2438700072581248
+  name "wall3(3)"
+  size 0.1 0.5 2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+  }
+}
+TB3 {
+  controller "n1bot"
+  controllerArgs "0"
+}

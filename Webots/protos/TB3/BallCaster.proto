@@ -1,0 +1,33 @@
+PROTO BallCaster [
+  field SFVec3f translation 0 0 0
+  field SFFloat radius 0.025
+  field SFString name "caster"
+]
+
+{
+Solid {
+  translation IS translation
+  rotation IS rotation
+  name IS name
+  children [
+	  Shape {
+	     appearance DEF POS_APP Appearance {
+	       material Material {
+	         diffuseColor 0 0 0
+	         specularColor 0 0 0
+	       }
+	     }
+	     geometry Sphere {radius IS radius}
+	  }
+  ]
+
+  contactMaterial "Slippery"
+  boundingObject Group {
+		children[Sphere {radius IS radius}]
+  }
+  physics Physics {
+    density -1
+    mass 0.1
+  }
+}
+}

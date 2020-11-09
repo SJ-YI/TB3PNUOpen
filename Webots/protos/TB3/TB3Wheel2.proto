@@ -1,0 +1,33 @@
+#VRML_SIM V8.1.0 utf8
+# tags: hidden
+# omnidirectionnal wheels with 2D coulomb friction
+
+PROTO TB3Wheel2 [
+  field SFVec3f translation 0 0 0
+  field SFVec3f anchor 0 0 0
+  field SFRotation rotation 1 0 0 -1.5708
+  field SFString solidname "wheel1"
+  field SFString name "wheel"
+  field SFString sensorName "wheel_sensor"
+  field SFFloat max_velocity 14.84
+]
+{
+  HingeJoint {
+    device [
+      RotationalMotor {
+        name IS name
+        maxVelocity IS max_velocity
+      }
+      PositionSensor {name IS sensorName}
+    ]
+    jointParameters HingeJointParameters {
+      axis 0 1 0
+      anchor IS anchor
+    }
+    endPoint TB3WheelSolid{
+      translation IS translation
+      rotation IS rotation
+      solidname IS solidname
+    }
+  }
+}

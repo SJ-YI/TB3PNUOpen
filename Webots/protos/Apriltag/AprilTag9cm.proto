@@ -1,0 +1,61 @@
+PROTO AprilTag9cm [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field MFString textureUrl "textures/36h11id0.jpg"
+  field SFString name "artag"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Transform{
+        rotation 1 0 0 -1.57
+        children[
+          Transform{
+            translation 0 -0.005 0
+            children[
+              Shape {
+                appearance Appearance {material Material {
+                  diffuseColor 1.0 1.0 1.0}
+                  }
+                geometry Box{size 0.09 0.005 0.09}
+              }
+            ]
+          }
+
+          Shape {
+            appearance DEF GREEN_APPEARANCE Appearance {
+              material Material {
+                diffuseColor 1.0 1.0 1.0
+                specularColor 1.0 1.0 1.0
+              }
+              texture ImageTexture {url IS textureUrl}
+            }
+            geometry IndexedFaceSet {
+              coord DEF QUATER_COORDS Coordinate {
+                point [
+                  0.04 0 0.04
+                  -0.04 0 0.04
+                  0.04 0 -0.04
+                  -0.04 0 -0.04
+                ]
+              }
+              texCoord TextureCoordinate {
+                point [
+                  0 0
+                  1 0
+                  1 1
+                  0 1
+                ]
+              }
+              coordIndex [2,3 1, 0, -1]
+              texCoordIndex [0, 1, 2, 3, -1]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+#VRML_SIM V7.4.3 utf8
+
+PROTO TBA2 [
+  field SFVec3f    translation    0 0.12 0
+  field SFRotation rotation       1 0 0 -1.5708
+  field SFString   controller     "n1bot"
+  field SFString   controllerArgs "1"
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  children [
+    HokuyoUtm30lx{
+      translation 0 0 0.12
+      rotation 1 0 0 -1.57
+      name "HeadLidar"
+      resolution 360
+      #resolution 36
+      minRange 0.12
+      fieldOfView 6.283
+    }
+    Camera{
+      translation 0 0.18 0.11 #camera height 0.11
+      rotation 1 0 0 1.57
+      name "FrontCamera"
+      width 400
+      height 300
+      fieldOfView 1.0855 #62.2 horizontal
+    }
+    InertialUnit {name "InertialUnit"}
+    Compass {name "Compass"}
+    GPS {name "GPS"}
+    DEF ACCEL Accelerometer {name "Accelerometer"
+      lookupTable [-39.24 0 0 39.24 1024 0]
+    }
+    DEF GYRO Gyro {name "Gyro"lookupTable [-27.925 0 0 27.925 1024 0]}
+    DEF RECEIVER Receiver { name "receiver" channel IS channel }
+    DEF EMITTER Emitter { name "emitter" channel IS channel }
+    DEF PHYSICS_RECEIVER Receiver { name "physics_receiver" type "serial" channel 10 byteSize 192 }
+    DEF PHYSICS_EMITTER Emitter { name "physics_emitter" type "serial" byteSize 96 }
+
+
+    Transform {
+      rotation 0 0 1 1.57
+      children[
+
+        WafflePlate {translation 0.128 0.064 0.125}
+        WafflePlate {translation 0.128 -0.064 0.125}
+        WafflePlate {translation 0 0.064 0.125}
+        WafflePlate {translation 0 -0.064 0.125}
+        WafflePlate {translation -0.128 0.064 0.125}
+        WafflePlate {translation -0.128 -0.064 0.125}
+
+        DEF WHEEL1 InteriorWheel {
+          translation 0.13 -0.165 0.05
+          anchor 0.13 -0.165 0.05
+          name "wheel1"
+          wname "wheel11"
+          sensorName "wheel1Sensor"
+          max_velocity 125.66# 20 rpm
+        }
+        DEF WHEEL2 ExteriorWheel {
+          translation 0.13 0.165 0.05
+          anchor 0.13 0.165 0.05
+          name "wheel2"
+          wname "wheel21"
+          sensorName "wheel2Sensor"
+          max_velocity 125.66# 20 rpm
+        }
+        DEF WHEEL3 ExteriorWheel {
+          translation -0.13 -0.165 0.05
+          anchor -0.13 -0.165 0.05
+          name "wheel3"
+          wname "wheel31"
+          sensorName "wheel3Sensor"
+          max_velocity 125.66# 20 rpm
+
+        }
+        DEF WHEEL4 InteriorWheel {
+          translation -0.13 0.165 0.05
+          anchor -0.13 0.165 0.05
+          name "wheel4"
+          wname "wheel41"
+          sensorName "wheel4Sensor"
+          max_velocity 125.66# 20 rpm
+        }
+      ]
+    }
+
+  ]
+  description "PNU Mobile Base 2"
+  boundingObject Group {
+    children [
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 22
+    centerOfMass [0 0 -0.045]
+    inertiaMatrix [0.166204 0.418086 0.55459 0 0 0]
+  }
+  controller IS controller
+  controllerArgs IS controllerArgs
+}
+}

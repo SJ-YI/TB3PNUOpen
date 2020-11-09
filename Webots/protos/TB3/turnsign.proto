@@ -1,0 +1,64 @@
+# VRML_SIM V7.4.3 utf8
+PROTO turnsign [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFBool locked TRUE
+  field SFString   name        "ts"
+  field MFString   barUrl  "textures/blank.jpg"  # Defines the texture used for the box.
+  field MFString   textureUrl  "textures/lturn.jpg"  # Defines the texture used for the box.
+]
+{
+Solid {
+  translation IS translation
+  rotation IS rotation
+  name IS name
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0 0
+        minStop -1.57
+        maxStop 0
+        staticFriction 0.5
+      }
+      endPoint Solid{
+        translation 0 0 0
+        rotation 0 1 0 0
+        name "shelfdoor"
+        physics Physics {density -1 mass 1.0}
+        boundingObject Transform{
+          translation 0 0.04 0
+          children[Box {size 0.01 0.08 0.08}]
+        }
+        children[
+          Wall {
+            translation 0 0 0
+            rotation 0 1 0 0
+            name "wall(1)"
+            size 0.02 0.08 0.02
+            appearance PBRAppearance {
+              metalness 0
+              roughness 0.75
+              baseColorMap ImageTexture {url IS barUrl}
+            }
+          }
+          Transform{
+            translation 0 0.12 0
+            children[
+              Shape {
+                geometry Box {size 0.003 0.08 0.08}
+                appearance PBRAppearance {
+                  metalness 0
+                  roughness 0.75
+                  baseColorMap ImageTexture {url IS textureUrl}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+  locked IS locked
+}
+}

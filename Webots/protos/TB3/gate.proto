@@ -1,0 +1,82 @@
+# VRML_SIM V7.4.3 utf8
+PROTO gate [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFBool locked TRUE
+  field MFString   textureUrl  "textures/gate.jpg"  # Defines the texture used for the box.
+  field SFNode     trayAppearance VarnishedPine { textureTransform TextureTransform { scale 10 10 } }  # Defines the appearance of the tray.
+  field SFString controller "void"
+  field MFString controllerArgs ""
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  name "gate"
+  controller IS controller
+  controllerArgs IS controllerArgs
+
+  children [
+    Receiver {
+      name "receiver"
+      channel 11
+    }
+    Wall {
+      translation 0 0 0
+      rotation 0 1 0 0
+      name "wall(1)"
+      size 0.04 0.15 0.04
+      appearance IS trayAppearance
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0.115 0
+        minStop -0.1
+        maxStop 1.67
+      }
+      device [
+        RotationalMotor {
+           name "joint"
+           maxVelocity 2
+           maxTorque 0.2
+        }
+      ]
+      endPoint Solid{
+        translation 0 0.115 0
+        rotation 0 1 0 0
+        name "shelfdoor"
+        physics Physics {density -1 mass 0.1}
+        boundingObject Transform{
+          translation 0 0.04 0
+          children[Box {size 0.01 0.08 0.08}]
+        }
+        children[
+          Transform{
+            translation 0.15 0 0
+            children[
+              Shape {
+                geometry Box {size 0.30 0.023 0.01}
+                appearance PBRAppearance {
+                  metalness 0
+                  roughness 0.75
+                  baseColorMap ImageTexture {url IS textureUrl}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+  locked IS locked
+  boundingObject Transform{
+    translation 0 0.01 0
+    children[Box {size 0.1 0.02 0.1}]
+  }
+  physics Physics {
+    density -1
+    mass 10.0
+  }
+}
+}

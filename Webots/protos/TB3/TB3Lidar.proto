@@ -1,0 +1,36 @@
+PROTO TB3Lidar [
+  field SFRotation rotation 1 0 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation 0 0 0.033
+        rotation 1 0 0 1.57
+        children[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ]
+      }
+    ]
+  }
+}
