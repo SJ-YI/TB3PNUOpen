@@ -7,5 +7,5 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: -1
 consoles: Console:All:All
-renderingDevicePerspectives: TB3:kinect2D;1;1;0;0.270683
+renderingDevicePerspectives: TB3:kinect2D;1;1;0.266329;0.00481928
 renderingDevicePerspectives: TB3:kinect2RGB;1;1;0;0

@@ -1,0 +1,20 @@
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find pnu_tb3open_launch)/urdf/turtlebot_armed_granny.urdf.xacro'" />
+  <param name="robot_description" command="$(arg urdf_file)" />
+  <arg name="rviz_file" value="$(find pnu_tb3open_launch)/config/tb3_minimal.rviz"/>
+
+  <!-- Robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <!--rviz  -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true"/>
+
+  <node pkg="nodelet" type="nodelet" args="manager" name="pnu_depthproc_manager" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="pnu_points_xyz" args="load depth_image_proc/point_cloud_xyzrgb pnu_depthproc_manager --no-bond">
+    <remap from="rgb/camera_info"          to="/camera_info" />
+    <remap from="rgb/image_rect_color"          to="/image_raw" />
+    <remap from="depth_registered/image_rect"  to="/depth_image_raw" />
+  </node>
+
+</launch>

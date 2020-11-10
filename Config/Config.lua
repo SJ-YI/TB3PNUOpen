@@ -3,8 +3,12 @@
 ------------------------------
 IS_LOCALHOST = false
 
-if not ROBOT_TYPE then ROBOT_TYPE=os.getenv("ROBOT_TYPE") end
-print("ROBOT TYPE:",ROBOT_TYPE)
+if not ROBOT_TYPE then
+	print("Setting robot type")
+	ROBOT_TYPE=os.getenv("ROBOT_TYPE")
+	print("ROBOT TYPE:",ROBOT_TYPE)
+end
+
 if ROBOT_TYPE=="0" then --Turtlebot 3!!!
 	print("TurtleBot 3 detected")
 elseif ROBOT_TYPE=="1" then --Turtlebot with mecanum wheels

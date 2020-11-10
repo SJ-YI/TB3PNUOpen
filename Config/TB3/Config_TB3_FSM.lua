@@ -3,6 +3,10 @@ local vector = require'vector'
 local fsm = {}
 fsm.update_rate = 100-- Update rate in Hz
 
+fsm.enabled = {}
+fsm.select = {}
+fsm.Motion = {}
+
 
 -- Which FSMs should be enabled?
 if ROBOT_TYPE=="1" then --Turtlebot with mecanum wheel
@@ -10,17 +14,12 @@ if ROBOT_TYPE=="1" then --Turtlebot with mecanum wheel
   fsm.select = {Motion = 'TB3',}
   fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanum'},}
 elseif ROBOT_TYPE=="2" then --Turtlebot with mecanum wheel and arm
-  fsm.enabled = {Motion = true,}
-  fsm.select = {Motion = 'TB3'}
-  fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanumArm'},}
+  -- fsm.enabled = {Motion = true,}
+  -- fsm.select = {Motion = 'TB3'}
+  -- fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanumArm'},}
 else --Base Turtlebot
-  fsm.enabled = {Motion = true,}
-  fsm.select = {Motion = 'TB3',}
-  fsm.Motion = {{'motionIdle', 'init', 'motionWebots'},}
 
-  fsm.enabled = {}
-  fsm.select = {}
-  fsm.Motion = {}
+
 end
 
 Config.fsm = fsm

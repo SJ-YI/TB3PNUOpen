@@ -98,9 +98,9 @@ Robot {
   boundingObject Group {
     children [
       Transform {
-        translation 0 0 0.06
+        translation 0 0 0.09
         rotation 1 0 0 1.57
-        children [Cylinder {height 0.05 radius 0.089}]
+        children [Cylinder {height 0.15 radius 0.089}]
       }
     ]
   }

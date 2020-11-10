@@ -19,7 +19,7 @@ int main(int argc, char **argv)
   char message[32];
   while (wb_robot_step(time_step) != -1){
    double distance = wb_distance_sensor_get_value(ir);
-   // printf("Distance:%.1f\n",distance);
+   // printf("Sensor %s: Distance:%.1f\n",argv[1],distance);
    if(distance<max_dist){
      wb_emitter_send(emitter,argv[1],strlen(argv[1])+1);
    }

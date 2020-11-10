@@ -1,14 +1,15 @@
-#VRML_SIM R2019a utf8
+#VRML_SIM R2020b utf8
 WorldInfo {
   info [
     "SLAM test environment"
   ]
   title "TB3"
   basicTimeStep 20
+  coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.010244660542558341 -0.6909409872900324 -0.7228385705073042 3.1482254442185655
-  position -2.6404268838676526 9.075478856907043 1.6257999188941392
+  orientation 0.5623333009762598 -0.5945308210377427 -0.5747298160434438 4.179099033944779
+  position -1.9342777269960916 9.148073828770569 0.007156278094129442
 }
 Background {
   skyColor [
@@ -28,7 +29,9 @@ DirectionalLight {
 RectangleArena {
   translation -1.5305898073046627 0 -0.062043345059158206
   floorSize 50 50
-  floorAppearance SandyGround {colorOverride 0.5 0.5 0.5}
+  floorAppearance SandyGround {
+    colorOverride 0.5 0.5 0.5
+  }
 }
 Wall {
   translation -3.737134229346116 2.1316282072803006e-14 -0.7518008320841711

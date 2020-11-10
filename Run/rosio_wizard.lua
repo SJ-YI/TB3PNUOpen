@@ -122,10 +122,10 @@ while running do
 
 	local jnames,pos,vel=rossub.checkJointTrajectory(sub_idx_joint)
 	if jnames and t-t_entry>1 then
-		print("Joint cmd!")
-		print(unpack(jnames))
-		print(unpack(pos))
-		print(unpack(vel))
+		-- print("Joint cmd!")
+		-- print(unpack(jnames))
+		-- print(unpack(pos))
+		-- print(unpack(vel))
 		local wheel_update=false
 		local wheel_vel=Body.get_wheel_command_velocity()
 		for i=1,#jnames do
@@ -136,11 +136,36 @@ while running do
 				wheel_vel[partno]=vel[i]
 			end
 		end
+		if ROBOT_TYPE=="2" then
+			local arm_update=false
+			local gripper_update=false
+			local arm_pos=Body.get_arm_command_position()
+			local gripper_pos=Body.get_gripper_command_position()
+
+			for i=1,#jnames do
+				local partname=jnames[i]:sub(1,#jnames[i]-1)
+				local partno=tonumber(jnames[i]:sub(#jnames[i]))
+				-- print(partname,partno)
+				if partname=="Arm" then arm_update=true;arm_pos[partno]=pos[i] end
+				if jnames[i]=="GripperL" then gripper_update=true; gripper_pos[1]=pos[i]
+				elseif jnames[i]=="GripperR" then gripper_update=true; gripper_pos[2]=pos[i]
+				end
+			end
+			if arm_update then
+				Body.set_arm_torque_enable(1) --position mode
+				Body.set_arm_command_position(arm_pos)
+			end
+			if gripper_update then
+				Body.set_gripper_torque_enable(1) --position mode
+				Body.set_gripper_command_position(gripper_pos)
+			end
+		end
 		if wheel_update then
 			print("Wheelvel:",unpack(wheel_vel))
 			Body.set_wheel_torque_enable(3) --velocity mode
 			Body.set_wheel_command_velocity(wheel_vel)
 		end
+
 	end
 
 	t=unix.time()

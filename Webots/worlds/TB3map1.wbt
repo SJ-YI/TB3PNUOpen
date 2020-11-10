@@ -323,6 +323,5 @@ Wall {
   }
 }
 TB3 {
-  controller "n1bot"
-  controllerArgs "0"
+  controller "n1bot"  
 }
