@@ -84,14 +84,20 @@ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 echo "source ~/Desktop/TB3PNUOpen/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
-### Run webots simulation
+### Run webots simulation for Turtlebot 3
 ```
 cd ~/Desktop/TB3PNUOpen
-./start_tb3_sim.sh
+./start_tb3_sim_1.sh
 ```
 
-### Run example script
+Press "i","j","k","l","," keys to move the robot around (in Webots simulator)
+
+### Run webots simulation for Turtlebot 3 Service Robot
 ```
 cd ~/Desktop/TB3PNUOpen
-./line_tracing_example.py
+./start_granny_sim.sh
 ```
+
+Press "i","j","k","l",",","h",";" keys to move the robot around
+Press "1","2" keys to change arm position
+press "[", "]" keys to open and close gripper

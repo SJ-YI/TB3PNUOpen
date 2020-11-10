@@ -29,7 +29,7 @@ local function update(key_code)
 
   local cmd_vel=false
   local cmd_motor=false
-  if ROBOT_TYPE==0 then
+  if ROBOT_TYPE=="0" then
     if key_char_lower==("i") then
       print("forward")
       rospub.joint_cmd(  seq,Config.jointNames, {0,0},{3,3})
