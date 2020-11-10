@@ -28,10 +28,7 @@ DirectionalLight {
 RectangleArena {
   translation -1.5305898073046627 0 -0.062043345059158206
   floorSize 50 50
-  floorAppearance SandyGround {
-    colorOverride 0.5 0.5 0.5
-  }
-  wallColor 1 1 1
+  floorAppearance SandyGround {colorOverride 0.5 0.5 0.5}
 }
 Wall {
   translation -3.737134229346116 2.1316282072803006e-14 -0.7518008320841711

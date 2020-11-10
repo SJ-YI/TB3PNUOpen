@@ -145,6 +145,15 @@ static int lua_jointstate(lua_State *L){
   return 0;
 }
 
+static int lua_jointtraj(lua_State *L){
+	int seq=lua_tonumber(L, 1);
+	std::vector<std::string> jointnames=lua_checkstringvector(L,2);
+  std::vector<double>jangles=lua_checkvector(L,3);
+	std::vector<double>jvel=lua_checkvector(L,4);
+	send_jointtraj(jointnames,jangles,jvel);
+  return 0;
+}
+
 static int lua_motorvel(lua_State *L){
   std::vector<double>motorvel=lua_checkvector(L,1);
 	send_motorvel(motorvel);
@@ -220,23 +229,18 @@ static const struct luaL_Reg rospub_lib[] = {
   {"baseteleop", lua_baseteleop},
 	// {"basegoal", lua_basegoal},
 	{"cmdvel", lua_cmdvel},
-
 	{"posereset", lua_posereset},
-
-
   {"laserscan", lua_laserscan},
 	{"webotslaserscan", lua_webotslaserscan},
 	{"webotslaserscancrop", lua_webotslaserscancrop},
-
 	{"rgbimage",lua_rgbimage},
 	{"depthimage",lua_depthimage},
-
 	{"camerainfo",lua_camerainfo},
-
 
 	{"motorpower",lua_motorpower},
 	{"motorvel",lua_motorvel},
 	{"joint", lua_joint},
+	{"joint_cmd", lua_jointtraj},
 	{"jointstate",lua_jointstate},
 
 

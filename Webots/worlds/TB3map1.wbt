@@ -31,7 +31,6 @@ RectangleArena {
   floorAppearance SandyGround {
     colorOverride 0.5 0.5 0.5
   }
-  wallColor 1 1 1
 }
 Wall {
   translation -3.841842289353953 2.1316282072803006e-14 -0.7936861240426292

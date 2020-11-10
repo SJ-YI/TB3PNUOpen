@@ -1,6 +1,6 @@
 #include "rossub.h"
 #include <tf/transform_listener.h>
-
+#include <cstdio>
 template <typename Type>
 class _Subscriber
 {
@@ -69,6 +69,15 @@ static void lua_pusharray(lua_State *L, float* v, int n) {
 	}
 }
 
+static void lua_pushstringarray(lua_State *L, std::vector<std::string>  str, int n) {
+	lua_createtable(L, n, 0);
+	for (int i = 0; i < n; i++) {
+		lua_pushstring(L, str[i].c_str());
+		lua_rawseti(L, -2, i+1);
+	}
+}
+
+
 static int lua_init(lua_State *L){
   const char *ros_node_name = lua_tostring(L, 1);
   if(!ros::isInitialized())  {
@@ -125,18 +134,19 @@ static int lua_checkJointTrajectory(lua_State *L){
   std::shared_ptr<_Subscriber<trajectory_msgs::JointTrajectory>> sub = std::static_pointer_cast<_Subscriber<trajectory_msgs::JointTrajectory>>(subList[idx]);
   if (sub->checkMsg()){
     trajectory_msgs::JointTrajectory ps = sub->getMsg();
-
-    double arm1=ps.points[0].positions[0];
-    double arm2=ps.points[0].positions[1];
-    double arm3=ps.points[0].positions[2];
-    double arm4=ps.points[0].positions[3];
-    double grip=ps.points[0].positions[4];
-    lua_pushnumber(L,arm1);
-    lua_pushnumber(L,arm2);
-    lua_pushnumber(L,arm3);
-    lua_pushnumber(L,arm4);
-    lua_pushnumber(L,grip);
-    return 5;
+    int n=ps.joint_names.size();
+    std::vector<std::string> jointnames;
+    std::vector<float> jangles;
+    std::vector<float> jvels;
+    for(int i=0;i<n;i++){
+      jointnames.push_back(ps.joint_names[i]);
+      jangles.push_back(ps.points[0].positions[i]);
+      jvels.push_back(ps.points[0].velocities[i]);
+    }
+    lua_pushstringarray(L, jointnames,n);
+    lua_pusharray(L, &jangles[0],n);
+    lua_pusharray(L, &jvels[0],n);
+    return 3;
   }else return 0;
 }
 

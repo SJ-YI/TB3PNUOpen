@@ -15,7 +15,7 @@ tmux send "roslaunch pnu_tb3open_launch turtlebot3_sim.launch" C-m
 tmux select-pane -t 1
 tmux send "source ~/.bashrc" C-m
 tmux send "cd ~/Desktop/TB3PNUOpen/" C-m
-tmux send "luajit Run/rosio_wizard.lua" C-m
+tmux send "luajit Run/rosio_wizard.lua 0" C-m
 tmux select-pane -t 2
 
 tmux send "source ~/.bashrc" C-m

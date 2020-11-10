@@ -3,7 +3,7 @@
 ------------------------------
 IS_LOCALHOST = false
 
-ROBOT_TYPE=os.getenv("ROBOT_TYPE")
+if not ROBOT_TYPE then ROBOT_TYPE=os.getenv("ROBOT_TYPE") end
 print("ROBOT TYPE:",ROBOT_TYPE)
 if ROBOT_TYPE=="0" then --Turtlebot 3!!!
 	print("TurtleBot 3 detected")
@@ -47,7 +47,6 @@ if Config.fsm.enabled then
 	end
 end
 
-
-Config.testfile = 'test_tb3_nonros' --for webots
+Config.testfile = 'test_tb3' --for webots
 
 return Config

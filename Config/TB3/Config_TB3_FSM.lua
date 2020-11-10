@@ -17,6 +17,10 @@ else --Base Turtlebot
   fsm.enabled = {Motion = true,}
   fsm.select = {Motion = 'TB3',}
   fsm.Motion = {{'motionIdle', 'init', 'motionWebots'},}
+
+  fsm.enabled = {}
+  fsm.select = {}
+  fsm.Motion = {}
 end
 
 Config.fsm = fsm

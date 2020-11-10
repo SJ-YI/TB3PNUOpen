@@ -26,6 +26,8 @@ void send_tf(std::vector<double>xyz,std::vector<double>rpy,const char* mother_li
 void send_odom(std::vector<double>pose);
 void send_joint(std::vector<double>armangle, float gripforce);
 void send_jointstate(std::vector<std::string> jointnames,std::vector<double>jangles);
+void send_jointtraj(std::vector<std::string> jointnames,std::vector<double>jangles,std::vector<double>jointvel);
+
 void send_motorvel(std::vector<double>motorvel);
 void send_path(std::vector<double> posx,std::vector<double> posy,std::vector<double> posa);
 void send_occgrid(float res, int width, int height, float x0, float y0, float z0, const char* data);

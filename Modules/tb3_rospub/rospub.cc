@@ -58,7 +58,7 @@ void init_publishers(){
   rgbinfo_publisher= rosNode->advertise<sensor_msgs::CameraInfo>("/camera_info", 1, true);
   lidar_publisher= rosNode->advertise<sensor_msgs::LaserScan>("/scan", 1, true);
   odom_publisher= rosNode->advertise<nav_msgs::Odometry>("/odom", 1, true);
-  joint_publisher= rosNode->advertise<trajectory_msgs::JointTrajectory>("/arm_pos", 1, true);
+  joint_publisher= rosNode->advertise<trajectory_msgs::JointTrajectory>("/joint_cmd", 1, true);
   jointstate_publisher= rosNode->advertise<sensor_msgs::JointState>("/joint_states", 1, true);
   motorvel_publisher= rosNode->advertise<std_msgs::Float32MultiArray>("/motor_cmd_vel", 1, true);
   path_publisher= rosNode->advertise<nav_msgs::Path>("/path", 1, true);
@@ -271,6 +271,23 @@ void send_joint(std::vector<double>armangle, float gripforce){
   joint_publisher.publish(msg);
 
 }
+
+void send_jointtraj(std::vector<std::string> jointnames,std::vector<double>jangles,std::vector<double>jointvel){
+  trajectory_msgs::JointTrajectory msg;
+  msg.header.stamp=ros::Time::now();
+  msg.joint_names.resize(jointnames.size());
+  msg.points.resize(1);
+  msg.points[0].positions.resize(jointnames.size());
+  msg.points[0].velocities.resize(jointnames.size());
+  for(int i=0;i<jointnames.size();i++){
+    msg.joint_names[i]=jointnames[i];
+    msg.points[0].positions[i]=jangles[i];
+    msg.points[0].velocities[i]=jointvel[i];
+  }
+  msg.points[0].time_from_start=ros::Duration(1.0);
+  joint_publisher.publish(msg);
+}
+
 
 void send_jointstate(std::vector<std::string> jointnames,std::vector<double>jangles){
   sensor_msgs::JointState msg;

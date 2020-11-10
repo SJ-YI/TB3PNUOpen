@@ -1,4 +1,5 @@
 #!/usr/bin/env luajit
+ROBOT_TYPE=arg[1]
 local pwd = os.getenv'PWD'
 local ok = pcall(dofile,'../fiddle.lua')
 if not ok then ok=pcall(dofile,'./fiddle.lua') end
@@ -14,7 +15,7 @@ rossub.init('webots_rossub')
 
 local sub_idx_cmdvel,sub_idx_joint,sub_idx_motorcmd
 sub_idx_cmdvel=rossub.subscribeTwist('/cmd_vel')
-sub_idx_joint=rossub.subscribeJointTrajectory('/arm_pos')
+sub_idx_joint=rossub.subscribeJointTrajectory('/joint_cmd')
 
 local rgb_ch = si.new_subscriber("rgb")
 local depth_ch = si.new_subscriber("depth")
@@ -29,6 +30,7 @@ local t_last_debug=unix.time()
 local t_next_debug=unix.time()+0.1
 local debug_interval=5.0
 local seq=1
+
 
 
 local function cb_lidar(skt)
@@ -75,7 +77,7 @@ local function cb_pose(skt)
   local pose_ffi=ffi.new("float[3]")
 	ffi.copy(pose_ffi,datastr,ffi.sizeof("float")*3)
 	rospub.tf({pose_ffi[0], pose_ffi[1],0},{0,0,pose_ffi[2]}, "map","base_footprint")
-  rospub.odom({pose_ffi[0],pose_ffi[1],pose_ffi[2]})
+  -- rospub.odom({pose_ffi[0],pose_ffi[1],pose_ffi[2]})
 	pose_count=pose_count+1
 	seq=seq+1
 end
@@ -118,11 +120,27 @@ while running do
 	-- 	hcm.set_base_teleop_t(t)
 	-- end
 
-	local a1,a2,a3,a4, grip=rossub.checkJointTrajectory(sub_idx_joint)
-	if a1 and t-t_entry>1 then
-		print("Arm Command!")
-		hcm.set_base_armtarget({a1,a2,a3,a4})
-		hcm.set_base_grippertarget(grip)
+	local jnames,pos,vel=rossub.checkJointTrajectory(sub_idx_joint)
+	if jnames and t-t_entry>1 then
+		print("Joint cmd!")
+		print(unpack(jnames))
+		print(unpack(pos))
+		print(unpack(vel))
+		local wheel_update=false
+		local wheel_vel=Body.get_wheel_command_velocity()
+		for i=1,#jnames do
+			local partname=jnames[i]:sub(1,#jnames[i]-1)
+			local partno=tonumber(jnames[i]:sub(#jnames[i]))
+			if partname=="wheel" then
+				wheel_update=true
+				wheel_vel[partno]=vel[i]
+			end
+		end
+		if wheel_update then
+			print("Wheelvel:",unpack(wheel_vel))
+			Body.set_wheel_torque_enable(3) --velocity mode
+			Body.set_wheel_command_velocity(wheel_vel)
+		end
 	end
 
 	t=unix.time()

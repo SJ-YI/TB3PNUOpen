@@ -1,17 +1,14 @@
 #!/usr/bin/env luajit
+ROBOT_TYPE=arg[1]
 -- (c) 2014 Team THORwIn
 local ok = pcall(dofile,'../fiddle.lua')
 if not ok then dofile'fiddle.lua' end
-local WAS_REQUIRED
-
-
 local unix=require'unix'
 local rospub=require'tb3_rospub'
+
 rospub.init("controller")
 local t_last_pressed=unix.time()+1.0
-
-local grip=0
-local armangle={0,0,0,0}
+local seq=0
 
 local function update(key_code)
   local t=unix.time()
@@ -27,66 +24,35 @@ local function update(key_code)
   local cmd_vel=false
   local cmd_motor=false
 
-	if key_char_lower==("i") then
-    targetvel_new[1]=targetvel_new[1]+0.1
-    cmd_vel=true
-  elseif key_char_lower==(",") then
-    targetvel_new[1]=targetvel_new[1]-0.1
-    cmd_vel=true
-  elseif key_char_lower==("j") then
-    targetvel_new[3]=targetvel_new[3]+0.4
-    cmd_vel=true
-  elseif key_char_lower==("l") then
-    targetvel_new[3]=targetvel_new[3]-0.4
-    cmd_vel=true
+  if key_char_lower==("i") then
+    print("all forward")
+    rospub.joint_cmd(  seq,Config.jointNames, {0,0},{3,3})
+    cmd_motor=true
   elseif key_char_lower==("k") then
-    targetvel_new={0,0,0}
-    cmd_vel=true
-  elseif key_char_lower==("h") then
-    targetvel_new[2]=targetvel_new[2]+0.05
-    cmd_vel=true
-  elseif key_char_lower==(";") then
-    targetvel_new[2]=targetvel_new[2]-0.05
-    cmd_vel=true
-  end
-
-
-  if key_char_lower==("w") then
-    rospub.motorvel({1,1,1,1})
+    print("stop")
+    rospub.joint_cmd(  seq,Config.jointNames, {0,0},{0,0})
     cmd_motor=true
-  elseif key_char_lower==("s") then
-    rospub.motorvel({0,0,0,0})
+  elseif key_char_lower==(",") then
+    print("all backward")
+    rospub.joint_cmd(  seq,Config.jointNames, {0,0},{-3,-3})
+    cmd_motor=true
+  elseif key_char_lower==("j") then
+    print("left")
+    rospub.joint_cmd(  seq,Config.jointNames, {0,0},{-3,3})
+    cmd_motor=true
+  elseif key_char_lower==("l") then
+    print("right")
+    rospub.joint_cmd(  seq,Config.jointNames, {0,0},{3,-3})
     cmd_motor=true
   end
-  
-
-
-  if key_char_lower==("1") then
-    armangle={0,0,0,0}
-    rospub.joint(armangle,grip)
-  elseif key_char_lower==("2") then
-    armangle={0,0,90*DEG_TO_RAD,-90*DEG_TO_RAD}
-    rospub.joint(armangle,grip)
-  elseif key_char_lower==("[") then
-    grip=1
-    rospub.joint(armangle,grip)
-  elseif key_char_lower==("]") then
-    grip=-1
-    rospub.joint(armangle,grip)
-  end
-
-  if cmd_vel then
-    print("Target vel:",unpack(targetvel_new))
-    rospub.baseteleop(targetvel_new[1],targetvel_new[2],targetvel_new[3])
-  end
-
+  seq=seq+1
 end
 
-if ... and type(...)=='string' then --webots handling
+if ... and type(...)=='string' and ...=="test_tb3" then --webots handling
+  print("CALLED BY WEBOTS!")
   WAS_REQUIRED = true
   return {entry=nil, update=update, exit=nil}
 end
-
 
 
 local getch = require'getch'

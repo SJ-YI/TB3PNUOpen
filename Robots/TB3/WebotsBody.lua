@@ -14,7 +14,7 @@ depth_ch = si.new_publisher("depth")
 lidar_ch = si.new_publisher("lidar")
 pose_ch = si.new_publisher("pose")
 jointstate_ch = si.new_publisher("jointstate")
-
+jointcmd_ch = si.new_subscriber("jointcmd")
 
 hcm.set_base_zeropos({0,0,0})
 

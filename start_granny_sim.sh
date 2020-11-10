@@ -11,17 +11,11 @@ tmux select-pane -R
 tmux select-pane -t 0
 tmux send "source ~/.bashrc" C-m
 tmux send "cd ~/Desktop/TurtleBotPNU/" C-m
-#tmux send "roslaunch pnu_tb3_launch tb3_service_slam.launch" C-m
-# tmux send "roslaunch pnu_tb3_launch tb3_service_run.launch" C-m
 tmux send "roslaunch pnu_tb3_launch tb3_service_groundtruth.launch" C-m
 tmux select-pane -t 1
 tmux send "source ~/.bashrc" C-m
 tmux send "cd ~/Desktop/TurtleBotPNU" C-m
-tmux send "luajit Run/rospub_webots_granny_wizard.lua granny" C-m
-tmux select-pane -t 2
-tmux send "source ~/.bashrc" C-m
-tmux send "cd ~/Desktop/TurtleBotPNU/" C-m
-tmux send "luajit Run/navigation_wizard.lua" C-m
+tmux send "luajit Run/rosio_wizard.lua 2" C-m
 tmux select-pane -t 3
 tmux send "source ~/.bashrc" C-m
 tmux send "cd ~/Desktop/TurtleBotPNU/" C-m
