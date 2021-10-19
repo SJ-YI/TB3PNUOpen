@@ -7,6 +7,7 @@ All code sources associated with this project are:
 
 * (c) 2019 Seung-Joon Yi
 * (c) 2020 Seung-Joon Yi
+* (c) 2021 Seung-Joon Yi
 
 * Exceptions are noted on a per file basis.
 
