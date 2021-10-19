@@ -14,7 +14,7 @@ PROTO ArmBase [
             appearance DEF POS_APP Appearance {
               material Material {diffuseColor 0.5 0.5 0.5 specularColor 0.5 0.5 0.5}
             }
-            geometry Box { size 0.06 0.06 0.09}
+            geometry Box { size 0.03 0.03 0.09}
           }
         ]
       }

@@ -73,13 +73,13 @@ local function update(key_code)
       rospub.joint_cmd(  seq,{"Arm1","Arm2","Arm3","Arm4"}, {0,0,0,0},{0,0,0,0})
     elseif key_char_lower==("2") then
       print("arm low position")
-      rospub.joint_cmd(  seq,{"Arm1","Arm2","Arm3","Arm4"}, {0,45*DEG_TO_RAD,0,-45*DEG_TO_RAD},{0,0,0,0})
+      rospub.joint_cmd(  seq,{"Arm1","Arm2","Arm3","Arm4"}, {0,-45*DEG_TO_RAD,45*DEG_TO_RAD,0*DEG_TO_RAD},{0,0,0,0})
     elseif key_char_lower==("[") then
       print("grip open")
-      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {0.06,0.06},{0,0})
+      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {1,1},{0,0})
     elseif key_char_lower==("]") then
       print("grip close")
-      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {0.0,0.0},{0,0})
+      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {-1,-1},{0,0})
     end
   end
   seq=seq+1

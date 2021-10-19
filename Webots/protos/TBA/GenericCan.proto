@@ -6,18 +6,12 @@ PROTO GenericCan [
   field SFFloat mass 0.1
   field SFFloat radius 0.038
   field SFFloat height 0.12
-  field SFString customData      ""
   field SFString name "can"
 ]
 {
-  Robot {
+  Solid {
     translation IS translation
     rotation IS rotation
-    controller IS controller
-    name IS name
-    customData IS customData
-    controllerArgs IS controllerArgs
-
     name IS name
     children [
       Shape {

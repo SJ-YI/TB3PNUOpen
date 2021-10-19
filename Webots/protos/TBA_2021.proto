@@ -1,0 +1,226 @@
+#VRML_SIM V7.4.3 utf8
+
+PROTO TBA_2021 [
+  field SFVec3f    translation    0 0.12 0
+  field SFRotation rotation       1 0 0 -1.5708
+  field SFString   controller     "n1bot"
+  field MFString   controllerArgs "2"
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  children [
+
+    RobotisLds01 {
+      translation 0 -0.095 0.155
+      rotation 1 0 0 1.57
+      name "HeadLidar"
+      resolution 360
+    }
+    Camera{
+      translation 0 0.127 0.10
+      rotation 1 0 0 1.57
+      name "kinect2RGB"
+      width 400
+      height 300
+      fieldOfView 1.0855 #62.2 horizontal
+    }
+    RangeFinder {
+      name "kinect2D"
+      translation 0 0.127 0.10
+      rotation 1 0 0 1.57
+      width 400
+      height 300
+      fieldOfView 1.0855 #62.2 horizontal
+      maxRange 4.0
+    }
+    InertialUnit {name "InertialUnit"}
+    Compass {name "Compass"}
+    GPS {name "GPS"}
+    DEF ACCEL Accelerometer {name "Accelerometer"
+      lookupTable [-39.24 0 0 39.24 1024 0]
+    }
+    DEF GYRO Gyro {name "Gyro"lookupTable [-27.925 0 0 27.925 1024 0]}
+    DEF RECEIVER Receiver { name "receiver" channel IS channel }
+    DEF EMITTER Emitter { name "emitter" channel IS channel }
+    DEF PHYSICS_RECEIVER Receiver { name "physics_receiver" type "serial" channel 10 byteSize 192 }
+    DEF PHYSICS_EMITTER Emitter { name "physics_emitter" type "serial" byteSize 96 }
+
+
+    Transform {
+      rotation 0 0 1 1.57
+      children[
+        WafflePlate {translation 0.064 0 0.125}
+        WafflePlate {translation -0.064 0 0.125}
+        WafflePlate {translation 0.064 0 0.075}
+        WafflePlate {translation -0.064 0 0.075}
+        WafflePlate {translation 0.064 0 0.025}
+        WafflePlate {translation -0.064 0 0.025}
+
+        DEF WHEEL1 InteriorWheel { #Front left
+          translation 0.0925 -0.1125 0.05
+          anchor 0.0925 -0.1125 0.05
+          axis 0 -1 0
+          name "wheel1"
+          wname "wheel11"
+          sensorName "wheel1Sensor"
+          #max_velocity 125.66# 20 rpm
+          max_velocity 8.063183 # 77RPM = 8.063183 rad/s
+        }
+        DEF WHEEL2 ExteriorWheel { #Front right
+          translation 0.0925 0.1125 0.05
+          anchor 0.0925 0.1125 0.05
+          name "wheel2"
+          wname "wheel21"
+          sensorName "wheel2Sensor"
+          #max_velocity 125.66# 20 rpm
+          max_velocity 8.063183 # 77RPM = 8.063183 rad/s
+        }
+        DEF WHEEL3 ExteriorWheel { #Back left
+          translation -0.0925 -0.1125 0.05
+          anchor -0.0925 -0.1125 0.05
+          axis 0 -1 0
+          name "wheel3"
+          wname "wheel31"
+          sensorName "wheel3Sensor"
+          #max_velocity 125.66# 20 rpm
+          max_velocity 8.063183 # 77RPM = 8.063183 rad/s
+
+        }
+        DEF WHEEL4 InteriorWheel { #Back right
+          translation -0.0925 0.1125 0.05
+          anchor -0.0925 0.1125 0.05
+          name "wheel4"
+          wname "wheel41"
+          sensorName "wheel4Sensor"
+          #max_velocity 125.66# 20 rpm
+          max_velocity 8.063183 # 77RPM = 8.063183 rad/s
+        }
+
+        DEF Arm1 HingeJoint{
+          device [
+            RotationalMotor {name "Arm1" maxVelocity 2.9216811678  maxTorque 44.2  }
+            PositionSensor { name "Arm1Sensor" }
+          ]
+          jointParameters HingeJointParameters {axis 0 0 1 anchor 0.108 0 0.125}
+          endPoint Solid {
+            translation 0.108 0 0.125
+            physics Physics {density -1  mass 0.245}
+            children [
+              ArmBase{}
+              DEF Arm2 HingeJoint{
+                device [
+                  RotationalMotor {name "Arm2" maxVelocity 2.9216811678  maxTorque 44.2  }
+                  PositionSensor { name "Arm2Sensor" }
+                ]
+                jointParameters HingeJointParameters {axis 0 1 0 anchor 0 0 0.095}
+                endPoint Solid {
+                  translation 0 0 0.095
+                  physics Physics {density -1  mass 0.15}
+                  children [
+                    Arm1{}
+                    DEF Arm3 HingeJoint{
+                      device [
+                        RotationalMotor {name "Arm3" maxVelocity 2.9216811678  maxTorque 44.2  }
+                        PositionSensor { name "Arm3Sensor" }
+                      ]
+                      jointParameters HingeJointParameters {axis 0 1 0   anchor 0.024 0 0.128}
+                      endPoint Solid {
+                        translation 0.024 0 0.128
+                        physics Physics {density -1  mass 0.15}
+                        children [
+                          Arm2{}
+                          DEF Arm4 HingeJoint{
+                            device [
+                              RotationalMotor {name "Arm4" maxVelocity 2.9216811678  maxTorque 44.2  }
+                              PositionSensor { name "Arm4Sensor" }
+                            ]
+                            jointParameters HingeJointParameters {axis 0 1 0  anchor 0.124 0 0}
+                            endPoint Solid {
+                              translation 0.124 0 0
+                              physics Physics {density -1  mass 0.15}
+                              children [
+                                HandBase{}
+                                DEF GripperR SliderJoint {
+                                  jointParameters JointParameters {axis 0 -1 0 minStop -0.050 maxStop 0.005}
+                                  device [
+                                    LinearMotor { name "GripperR" minPosition -0.004 maxPosition 0.005 maxForce 50 }
+                                    PositionSensor{ name "GripperRSensor"}
+                                  ]
+                                  endPoint Solid {
+                                    translation 0.04 -0.005 0
+                                    children [
+                                      Transform{
+                                        translation 0.04 0 0
+                                        children[ Shape {
+                                            appearance DEF DARK PBRAppearance { baseColor 0.301961 0.301961 0.301961 roughness 0.3  metalness 0 }
+                                            geometry Box {size 0.08 0.01 0.03}
+                                        }]
+                                      }
+                                    ]
+                                    name "GripperR"
+                                    boundingObject Transform { translation 0.04 0 0 children [Box {size 0.08 0.01 0.03}] }
+                                    physics Physics {mass 0.15 density -1}
+                                  }
+                                }
+                                DEF GripperL SliderJoint {
+                                  jointParameters JointParameters {axis 0 1 0  minStop -0.05 maxStop 0.005}
+                                  device [
+                                    LinearMotor { name "GripperL" minPosition -0.004 maxPosition 0.005 maxForce 50 }
+                                    PositionSensor{ name "GripperLSensor"}
+                                  ]
+                                  endPoint Solid {
+                                    translation 0.04 0.005 0
+                                    children [
+                                      Transform{
+                                        translation 0.04 0 0
+                                        children[ Shape { appearance USE DARK geometry Box {size 0.08 0.01 0.03} } ]
+                                      }
+                                    ]
+                                    name "GripperL"
+                                    boundingObject Transform { translation 0.04 0 0 children [Box {size 0.08 0.01 0.03}] }
+                                    physics Physics {mass 0.15 density -1}
+                                  }
+                                }
+
+                              ]
+                            }
+                          }# End Arm4
+                        ]
+                      }
+                    }# End Arm3
+                  ]
+                  boundingObject Transform {
+                    translation 0 0 0
+                    children [Box {size 0.05 0.05 0.05}]
+                  }
+                }
+              }  #End Arm2
+            ]
+            boundingObject Transform {
+              translation 0 0 0
+              children [Box {size 0.05 0.05 0.05}]
+            }
+          }#End Solid
+        }  #End Arm1
+
+      ]
+    }
+
+  ]
+  description "PNU Mobile Base 2"
+  boundingObject Group {
+    children [
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 22
+    centerOfMass [0 0 -0.045]
+    inertiaMatrix [0.166204 0.418086 0.55459 0 0 0]
+  }
+  controller IS controller
+  controllerArgs IS controllerArgs
+}
+}

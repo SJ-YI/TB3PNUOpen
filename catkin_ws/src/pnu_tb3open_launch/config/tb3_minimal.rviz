@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /TF1/Frames1
         - /PointCloud21
       Splitter Ratio: 0.461024493
@@ -311,7 +312,7 @@ Visualization Manager:
   Global Options:
     Background Color: 140; 140; 140
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -350,7 +351,7 @@ Visualization Manager:
       Pitch: 1.05979455
       Target Frame: map
       Value: ThirdPersonFollower (rviz)
-      Yaw: 3.23421597
+      Yaw: 3.22421598
     Saved: ~
 Window Geometry:
   Displays:
@@ -370,5 +371,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1520
-  X: 2424
-  Y: 150
+  X: 2099
+  Y: 141
