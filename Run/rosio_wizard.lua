@@ -76,7 +76,7 @@ local function cb_pose(skt)
 	local datastr = unpack(skt:recv_all())
   local pose_ffi=ffi.new("float[3]")
 	ffi.copy(pose_ffi,datastr,ffi.sizeof("float")*3)
-	rospub.tf({pose_ffi[0], pose_ffi[1],0},{0,0,pose_ffi[2]}, "map","base_footprint")
+	rospub.tf({pose_ffi[0], pose_ffi[1],0},{0,0,pose_ffi[2]}, "odom","base_footprint")
   -- rospub.odom({pose_ffi[0],pose_ffi[1],pose_ffi[2]})
 	pose_count=pose_count+1
 	seq=seq+1
@@ -143,15 +143,15 @@ while running do
 			local arm_update=false
 			local gripper_update=false
 			local arm_pos=Body.get_arm_command_position()
-			local gripper_pos=Body.get_gripper_command_position()
+			local gripper_target=Body.get_gripper_command_torque()
 
 			for i=1,#jnames do
 				local partname=jnames[i]:sub(1,#jnames[i]-1)
 				local partno=tonumber(jnames[i]:sub(#jnames[i]))
 				-- print(partname,partno)
 				if partname=="Arm" then arm_update=true;arm_pos[partno]=pos[i] end
-				if jnames[i]=="GripperL" then gripper_update=true; gripper_pos[1]=pos[i]
-				elseif jnames[i]=="GripperR" then gripper_update=true; gripper_pos[2]=pos[i]
+				if jnames[i]=="GripperL" then gripper_update=true; gripper_target[1]=pos[i]
+				elseif jnames[i]=="GripperR" then gripper_update=true; gripper_target[2]=pos[i]
 				end
 			end
 			if arm_update then
@@ -159,8 +159,8 @@ while running do
 				Body.set_arm_command_position(arm_pos)
 			end
 			if gripper_update then
-				Body.set_gripper_torque_enable(1) --position mode
-				Body.set_gripper_command_position(gripper_pos)
+				Body.set_gripper_torque_enable(2) --torque mode
+				Body.set_gripper_command_torque(gripper_target)
 			end
 		end
 		if wheel_update then
@@ -174,7 +174,7 @@ while running do
 	t=unix.time()
 	if t>t_next_debug then
 		local t_elapsed=t-t_last_debug
-		print(string.format("Rospub| RGB %.1f hz Depth: %.1f hz Lidar %.1f hz Pose %.1f hz Joint %.1f hz",
+		print(string.format("RosIO| RGB %.1f hz Depth: %.1f hz Lidar %.1f hz Pose %.1f hz Joint %.1f hz",
 			rgb_count/t_elapsed,depth_count/t_elapsed,
 			lidar_count/t_elapsed,pose_count/t_elapsed,jointstate_count/t_elapsed
 		))

@@ -21,6 +21,6 @@ tmux send "luajit Run/rosio_wizard.lua 2" C-m
 tmux select-pane -t 2
 tmux send "source ~/.bashrc" C-m
 tmux send "cd ~/Desktop/TB3PNUOpen/" C-m
-tmux send "webots Webots/worlds/HomeService.wbt" C-m
+tmux send "webots Webots/worlds/2021_Home_Service_Challenge.wbt" C-m
 tmux select-layout even-horizontal
 tmux attach-session -d

@@ -1,6 +1,6 @@
-Webots Proto Cache File version 1.4
+Webots Proto Cache File version 1.5
 protoFileHash: a2ff51fc53eb734b7fa5b8769ba535be
-containsDevices: 0
+needsRobotAncestor: 0
 baseType: Transform
 slotType: 
 parameters: rotation,translation

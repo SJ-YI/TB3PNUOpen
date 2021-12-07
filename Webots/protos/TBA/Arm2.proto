@@ -8,13 +8,13 @@ PROTO Arm2 [
     translation IS translation
     children [
       Transform{
-        translation 0.095 0 0# 0.19/2
+        translation 0.064 0 0# 0.124/2
         children[
           Shape {
             appearance DEF POS_APP Appearance {
               material Material {diffuseColor 0.5 0.5 0.5 specularColor 0.5 0.5 0.5}
             }
-            geometry Box { size 0.19 0.0143 0.03}
+            geometry Box { size 0.124 0.0143 0.03}
           }
         ]
       }
