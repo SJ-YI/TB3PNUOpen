@@ -21,6 +21,10 @@ Config = {PLATFORM_NAME = 'TB3'}
 local exo = {'FSM','Robot','Perception'}
 -- Global Config
 
+Config.testfile = 'test_tb3' --for webots
+Config.send_motion_cmd = true --enable cmd_vel relay
+
+
 -----------------------------------
 -- Load Paths and Configurations --
 -----------------------------------
@@ -51,7 +55,6 @@ if Config.fsm.enabled then
 	end
 end
 
-Config.testfile = 'test_tb3' --for webots
-Config.send_motion_cmd = true --enable cmd_vel relay
+
 
 return Config

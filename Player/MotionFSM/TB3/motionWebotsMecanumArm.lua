@@ -88,9 +88,9 @@ function state.update()
   local dt = t - t_update -- Save this at the last update time
   t_update = t
 
-  local grip=hcm.get_base_grippertarget()
-  Body.set_arm_command_position(hcm.get_base_armtarget())
-  Body.set_gripper_command_torque({-grip,-grip})
+  -- local grip=hcm.get_base_grippertarget()
+  -- Body.set_arm_command_position(hcm.get_base_armtarget())
+  -- Body.set_gripper_command_torque({-grip,-grip})
   move_base_webots(t,dt)
 end
 
