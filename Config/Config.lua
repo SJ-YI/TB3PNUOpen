@@ -52,5 +52,6 @@ if Config.fsm.enabled then
 end
 
 Config.testfile = 'test_tb3' --for webots
+Config.send_motion_cmd = true --enable cmd_vel relay
 
 return Config

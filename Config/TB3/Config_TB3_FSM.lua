@@ -14,12 +14,13 @@ if ROBOT_TYPE=="1" then --Turtlebot with mecanum wheel
   fsm.select = {Motion = 'TB3',}
   fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanum'},}
 elseif ROBOT_TYPE=="2" then --Turtlebot with mecanum wheel and arm
-  -- fsm.enabled = {Motion = true,}
-  -- fsm.select = {Motion = 'TB3'}
-  -- fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanumArm'},}
+  fsm.enabled = {Motion = true,}
+  fsm.select = {Motion = 'TB3'}
+  fsm.Motion = {{'motionIdle', 'init', 'motionWebotsMecanumArm'},}
 else --Base Turtlebot
-
-
+  fsm.enabled = {Motion = true,}
+  fsm.select = {Motion = 'TB3',}
+  fsm.Motion = {{'motionIdle', 'init', 'motionWebots'},}
 end
 
 Config.fsm = fsm

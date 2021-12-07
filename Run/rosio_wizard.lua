@@ -113,12 +113,15 @@ while running do
 	local t=unix.time()
 	npoll = poller:poll(TIMEOUT)
 
-	-- local ret = rossub.checkTwist(sub_idx_cmdvel)
-	-- if ret and t-t_entry>1 then
-	-- 	print("Velocity Command!")
-	-- 	hcm.set_base_velocity({ret[1],ret[2],ret[6]})
-	-- 	hcm.set_base_teleop_t(t)
-	-- end
+	--This handles the cmd_vel topic to the motion state machine
+	if Config.send_motion_cmd then
+		local ret = rossub.checkTwist(sub_idx_cmdvel)
+		if ret and t-t_entry>1 then
+			-- print("Velocity Command!")
+			hcm.set_base_velocity({ret[1],ret[2],ret[6]})
+			hcm.set_base_teleop_t(t)
+		end
+	end
 
 	local jnames,pos,vel=rossub.checkJointTrajectory(sub_idx_joint)
 	if jnames and t-t_entry>1 then
