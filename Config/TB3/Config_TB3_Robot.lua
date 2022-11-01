@@ -64,8 +64,7 @@ elseif not ROBOT_TYPE or ROBOT_TYPE=="3" then --PADUK
     direction=vector.new({-1,1,-1, -1,-1,-1, 1,1,1, 1,-1,-1}),
     rad_offset=vector.new({0,0,0, 0,0,0, 0,0,0, 0,0,0 })*DEG_TO_RAD
   }
-  if IS_WEBOTS then servo.direction=vector.new({1,1,1, 1,1,1,   1,1,1,   1,1,1}) end
-
+  if IS_WEBOTS then Config.servo.direction=vector.new({1,1,1, 1,1,1,   1,1,1,   1,1,1}) end
 else --Turtlebot autorace bot
   Config.nJoint = 2
   Config.jointNames={"wheel1","wheel2"}
