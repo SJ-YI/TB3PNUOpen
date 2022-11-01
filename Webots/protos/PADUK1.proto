@@ -23,14 +23,18 @@ Robot {
       rotation 1 0 0 1.57
       translation 0.3 0 0
       children[
-        kinect2 {
-          width 640 height 480
-          fieldOfView 1.0472 # 60 deg horizontal
-          rotation 0 1 0 -1.57
-          maxRange 6
-          translation 0 0 0
-          translationRGB 0 0 0
-          translationD 0 0 0
+        Camera{
+          name "kinect2RGB"
+          width 400
+          height 300
+          fieldOfView 1.0855 #62.2 horizontal
+        }
+        RangeFinder {
+          name "kinect2D"
+          width 400
+          height 300
+          fieldOfView 1.0855 #62.2 horizontal
+          maxRange 4.0
         }
       ]
     }

@@ -107,33 +107,22 @@ depth_ch.callback=cb_depth
 poller = si.wait_on_channels({rgb_ch,lidar_ch,pose_ch,jointstate_ch,depth_ch})
 
 running=true
--- Timeout in milliseconds (100 Hz)
-local TIMEOUT = 1e3 / 500
-while running do
-	local t=unix.time()
-	npoll = poller:poll(TIMEOUT)
 
-	-- local ret = rossub.checkTwist(sub_idx_cmdvel)
-	-- if ret and t-t_entry>1 then
-	-- 	print("Velocity Command!")
-	-- 	hcm.set_base_velocity({ret[1],ret[2],ret[6]})
-	-- 	hcm.set_base_teleop_t(t)
-	-- end
 
+
+local function update_jointcmd(t)
 	local jnames,pos,vel=rossub.checkJointTrajectory(sub_idx_joint)
 	if jnames and t-t_entry>1 then
-		-- print("Joint cmd!")
-		-- print(unpack(jnames))
-		-- print(unpack(pos))
-		-- print(unpack(vel))
-		local wheel_update=false
-		local wheel_vel=Body.get_wheel_command_velocity()
-		for i=1,#jnames do
-			local partname=jnames[i]:sub(1,#jnames[i]-1)
-			local partno=tonumber(jnames[i]:sub(#jnames[i]))
-			if partname=="wheel" then
-				wheel_update=true
-				wheel_vel[partno]=vel[i]
+		local wheel_update,wheel_vel=false,nil
+		if ROBOT_TYPE~="3" then
+			wheel_vel=Body.get_wheel_command_velocity()
+			for i=1,#jnames do
+				local partname=jnames[i]:sub(1,#jnames[i]-1)
+				local partno=tonumber(jnames[i]:sub(#jnames[i]))
+				if partname=="wheel" then
+					wheel_update=true
+					wheel_vel[partno]=vel[i]
+				end
 			end
 		end
 		if ROBOT_TYPE=="2" then
@@ -159,16 +148,33 @@ while running do
 				Body.set_gripper_torque_enable(1) --position mode
 				Body.set_gripper_command_position(gripper_pos)
 			end
+		elseif ROBOT_TYPE=="3" then
+			local leg_update=false
+			local leg_pos=Body.get_leg_command_position()
+			for i=1,#jnames do
+				for j=1,#Config.jointNames do
+					if jnames[i]==Config.jointNames[j] then leg_pos[j]=pos[i] end
+				end
+			end
+			Body.set_leg_command_position(leg_pos)
 		end
 		if wheel_update then
 			print("Wheelvel:",unpack(wheel_vel))
 			Body.set_wheel_torque_enable(3) --velocity mode
 			Body.set_wheel_command_velocity(wheel_vel)
 		end
-
 	end
+end
+
+
+-- Timeout in milliseconds (100 Hz)
+local TIMEOUT = 1e3 / 500
+while running do
+	local t=unix.time()
+	npoll = poller:poll(TIMEOUT)
 
 	t=unix.time()
+	update_jointcmd(t)
 	if t>t_next_debug then
 		local t_elapsed=t-t_last_debug
 		print(string.format("Rospub| RGB %.1f hz Depth: %.1f hz Lidar %.1f hz Pose %.1f hz Joint %.1f hz",
