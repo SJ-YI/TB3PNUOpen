@@ -1,0 +1,23 @@
+PROTO PADUK1ArmWrist [
+  field SFRotation rotation 0 0 1 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children[
+      Transform{
+        translation -0.3875 0.085 -0.184
+        rotation 0 0 1 3.1415
+        children[
+          Shape {
+            appearance Plastic{colorOverride 0.8 0.8 0.8}
+            geometry DEF Lower_Link_1 Mesh {url "./meshes/X-430_IDLE_1.stl"}
+
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+PROTO M3LegLower [
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation 0 0 -0.105# 0.210/2
+        children[
+          Shape {
+            appearance DEF POS_APP Appearance {
+              material Material {diffuseColor 0.5 0.5 0.5 specularColor 0.5 0.5 0.5}
+            }
+            geometry Box { size 0.03 0.0143 0.210}
+          }
+        ]
+      }
+      Transform{
+        translation 0 0 -0.210
+        children[
+          Shape {
+            appearance USE POS_APP
+            geometry Sphere {radius 0.020}
+          }
+        ]
+      }
+
+    ]
+  }
+}
