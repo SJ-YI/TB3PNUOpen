@@ -22,7 +22,7 @@ local exo = {'FSM','Robot','Perception'}
 -- Global Config
 
 Config.testfile = 'test_tb3' --for webots
-Config.send_motion_cmd = true --enable cmd_vel relay
+-- Config.send_motion_cmd = true --enable cmd_vel relay
 
 
 -----------------------------------

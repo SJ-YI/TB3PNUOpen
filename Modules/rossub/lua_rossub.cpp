@@ -138,14 +138,13 @@ static int lua_checkJointTrajectory(lua_State *L){
     std::vector<std::string> jointnames;
     std::vector<float> jangles;
     std::vector<float> jvels;
-    for(int i=0;i<n;i++){
-      jointnames.push_back(ps.joint_names[i]);
-      jangles.push_back(ps.points[0].positions[i]);
-      jvels.push_back(ps.points[0].velocities[i]);
-    }
+
+    for(int i=0;i<ps.joint_names.size();i++) jointnames.push_back(ps.joint_names[i]);
+    for(int i=0;i<ps.points[0].positions.size();i++) jangles.push_back(ps.points[0].positions[i]);
+    for(int i=0;i<ps.points[0].velocities.size();i++) jvels.push_back(ps.points[0].velocities[i]);
     lua_pushstringarray(L, jointnames,n);
-    lua_pusharray(L, &jangles[0],n);
-    lua_pusharray(L, &jvels[0],n);
+    lua_pusharray(L, &jangles[0],ps.points[0].positions.size());
+    lua_pusharray(L, &jvels[0],ps.points[0].velocities.size());
     return 3;
   }else return 0;
 }
