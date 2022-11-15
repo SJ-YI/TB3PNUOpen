@@ -1,0 +1,27 @@
+PROTO M3LegUpper [
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation 0 0 -0.110 # 0.220/2
+        children[
+          Shape {
+            appearance DEF POS_APP Appearance {
+              material Material {
+              diffuseColor 0.975 0.486 0.975
+              specularColor 0.7 0.7 1.0
+              }
+#              texture ImageTexture {url ["textures/atlas_carbon_fiber.jpg"]}
+            }
+            geometry Box {size  0.03 0.0275 0.220 }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -15,6 +15,8 @@ elseif ROBOT_TYPE=="1" then --Turtlebot with mecanum wheels
 	print("TurtleBot 3 Mecanum detected")
 elseif ROBOT_TYPE=="2" then --Turtlebot with mecanum wheels AND a manipulator
 	print("Armed TurtleBot 3 Mecanum detected")
+elseif ROBOT_TYPE=="3" then --Turtlebot with mecanum wheels AND a manipulator
+	print("PADUK DETECTED")
 end
 
 Config = {PLATFORM_NAME = 'TB3'}

@@ -1,0 +1,318 @@
+#VRML_SIM V7.4.3 utf8
+# PNU M3mk1 robot
+# Upper link: 220mm Lower link: 210mm foot z: 20mm
+# Shouler roll to leg Y: 0.0835
+# Shouler Y: 0.064
+# ShoulderX: 0.2095
+
+
+
+PROTO PADUK1 [
+  field SFVec3f    translation    0 0.12 0
+  field SFRotation rotation       1 0 0 -1.5708
+  field SFString   controller     "n1bot"
+  field MFString   controllerArgs "3"  #2020b rev1 update (SFSTRING TO MFSTRING)
+  field MFNode     bodySlot       []
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  children [
+    Transform{
+      rotation 1 0 0 1.57
+      translation 0.3 0 0
+      children[
+        Camera{
+          name "kinect2RGB"
+          width 400
+          height 300
+          fieldOfView 1.0855 #62.2 horizontal
+        }
+        RangeFinder {
+          name "kinect2D"
+          width 400
+          height 300
+          fieldOfView 1.0855 #62.2 horizontal
+          maxRange 4.0
+        }
+      ]
+    }
+
+    #M3Base {}
+    PADUK1Base {}
+    InertialUnit {name "InertialUnit"}
+    Compass {name "Compass"}
+    GPS {name "GPS"}
+    DEF ACCEL Accelerometer {
+      name "Accelerometer"         # Must place where is on the actual robot
+      translation 0 0 0.02 # Rotate to the correct orientation
+      rotation 0 0.707107 0.707107 3.14159
+      lookupTable [-39.24 0 0 39.24 1024 0]
+    }
+    DEF GYRO Gyro {
+      # Must place where is on the actual robot
+      translation 0 0 0.02
+      # Rotate to the correct orientation
+      rotation -0.57735 0.57735 0.57735 2.09
+      name "Gyro"
+      lookupTable [-27.925 0 0 27.925 1024 0]
+    }
+    DEF RECEIVER Receiver { name "receiver" channel IS channel }
+    DEF EMITTER Emitter { name "emitter" channel IS channel }
+    DEF PHYSICS_RECEIVER Receiver { name "physics_receiver" type "serial" channel 10 byteSize 192 }
+    DEF PHYSICS_EMITTER Emitter { name "physics_emitter" type "serial" byteSize 96 }
+    Group {children IS bodySlot}
+
+##shouder roll width: 0.047+0.047
+##shoulder pitch width: 0.2065
+
+    DEF Leg11 HingeJoint{
+      device [
+        RotationalMotor {name "FLRoll" maxVelocity 23  maxTorque 21  }
+        PositionSensor { name "FLRollSensor" }
+      ]
+
+      jointParameters HingeJointParameters {axis 1 0 0 anchor 0.2095 0.064 0}
+      endPoint Solid {
+        name "Leg11_1"
+        translation 0.2095 0.064 0
+        physics Physics {density -1  mass 1.3}
+        children [
+          M3Shoulder{translation -0.07 0 0 }
+          M3Shoulder{rotation 0 0 1 1.57 }
+          DEF Leg12 HingeJoint{
+            device [
+              RotationalMotor {name "FLPitch" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5 }
+              PositionSensor { name "FLPitchSensor" }
+            ]
+            jointParameters HingeJointParameters {axis 0 1 0 anchor 0 0.0835 0}
+            endPoint Solid {
+              translation 0 0.0835 0
+              physics Physics {density -1  mass 0.7}
+              children [
+                M3Shoulder{rotation 0 0 1 1.57 translation 0 -0.03 0}
+                PADUK1LegUpper{}
+                DEF Leg13 HingeJoint{
+                  device [
+                    RotationalMotor {name "FLElbow" maxVelocity 23  maxTorque 35 }
+                    PositionSensor { name "FLElbowSensor" }
+                  ]
+                  jointParameters HingeJointParameters {axis 0 1 0   anchor 0 0 -0.220}
+                  endPoint Solid {
+                    translation 0 0 -0.220
+                    physics Physics {density -1  mass 0.3}
+                    children [PADUK1LegLower{}]
+                    boundingObject Transform {
+                      translation -0.04862 0 -0.194
+                      children [Sphere {radius 0.020}]
+                    }
+                  }
+                }
+              ]
+              boundingObject Transform {
+                translation 0 0 0
+                children [Box {size 0.05 0.05 0.05}]
+              }
+            }
+          }
+        ]
+        boundingObject Transform {
+          translation 0 0 0
+          children [Box {size 0.05 0.05 0.05}]
+        }
+      }
+    }
+
+    DEF Leg21 HingeJoint{
+      device [
+        RotationalMotor {name "FRRoll" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5 }
+        PositionSensor { name "FRRollSensor" }
+      ]
+      jointParameters HingeJointParameters {axis 1 0 0 anchor 0.2095 -0.064 0}
+      endPoint Solid {
+        name "Leg21_1"
+        translation 0.2095 -0.064 0
+        physics Physics {density -1  mass 1.3}
+        children [
+          M3Shoulder{translation -0.07 0 0 }
+          M3Shoulder{rotation 0 0 1 1.57 }
+          DEF Leg22 HingeJoint{
+            device [
+              RotationalMotor {name "FRPitch" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5  }
+              PositionSensor { name "FRPitchSensor" }
+            ]
+            jointParameters HingeJointParameters {axis 0 1 0 anchor 0 -0.0835 0}
+            endPoint Solid {
+              translation 0 -0.0835 0
+              physics Physics {density -1  mass 0.7}
+              children [
+                M3Shoulder{rotation 0 0 1 1.57 translation 0 0.03 0}
+                PADUK1LegUpper{}
+                DEF Leg23 HingeJoint{
+                  device [
+                    RotationalMotor {name "FRElbow" maxVelocity 23  maxTorque 35 controlPID 88 0 0.5  }
+                    PositionSensor { name "FRElbowSensor" }
+                  ]
+                  jointParameters HingeJointParameters {axis 0 1 0   anchor 0 0 -0.220}
+                  endPoint Solid {
+                    translation 0 0 -0.220
+                    physics Physics {density -1  mass 0.3}
+                    children [PADUK1LegLower{}]
+                    boundingObject Transform {
+                      translation -0.04862 0 -0.194
+                      children [Sphere {radius 0.020}]
+                    }
+                  }
+                }
+              ]
+              boundingObject Transform {
+                translation 0 0 0
+                children [Box {size 0.05 0.05 0.05}]
+              }
+            }
+          }
+        ]
+        boundingObject Transform {
+          translation 0 0 0
+          children [Box {size 0.05 0.05 0.05}]
+        }
+      }
+    }
+
+    DEF Leg31 HingeJoint{
+      device [
+        RotationalMotor {name "RLRoll" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5  }
+        PositionSensor { name "RLRollSensor" }
+      ]
+
+      jointParameters HingeJointParameters {axis 1 0 0 anchor -0.2095 0.064 0}
+      endPoint Solid {
+        name "Leg31_1"
+        translation -0.2095 0.064 0
+        physics Physics {density -1  mass 1.3}
+        children [
+        M3Shoulder{translation 0.07 0 0 }
+        M3Shoulder{rotation 0 0 1 1.57 }
+          DEF Leg12 HingeJoint{
+            device [
+              RotationalMotor {name "RLPitch" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5 }
+              PositionSensor { name "RLPitchSensor" }
+            ]
+            jointParameters HingeJointParameters {axis 0 1 0 anchor 0 -0.0835 0}
+            endPoint Solid {
+              translation 0 0.0835 0
+              physics Physics {density -1  mass 0.7}
+              children [
+                M3Shoulder{rotation 0 0 1 1.57 translation 0 -0.03 0}
+                PADUK1LegUpper{}
+                DEF Leg13 HingeJoint{
+                  device [
+                    RotationalMotor {name "RLElbow" maxVelocity 23  maxTorque 35 controlPID 88 0 0.5 }
+                    PositionSensor { name "RLElbowSensor" }
+                  ]
+                  jointParameters HingeJointParameters {axis 0 1 0   anchor 0 0 -0.220}
+                  endPoint Solid {
+                    translation 0 0 -0.220
+                    physics Physics {density -1  mass 0.3}
+                    children [PADUK1LegLower{}]
+                    boundingObject Transform {
+                      translation -0.04862 0 -0.194
+                      children [Sphere {radius 0.020}]
+                    }
+                  }
+                }
+              ]
+              boundingObject Transform {
+                translation 0 0 0
+                children [Box {size 0.05 0.05 0.05}]
+              }
+            }
+          }
+        ]
+        boundingObject Transform {
+          translation 0 0 0
+          children [Box {size 0.05 0.05 0.05}]
+        }
+      }
+    }
+
+    DEF Leg41 HingeJoint{
+      device [
+        RotationalMotor {name "RRRoll" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5  }
+        PositionSensor { name "RRRollSensor" }
+      ]
+      jointParameters HingeJointParameters {axis 1 0 0 anchor -0.2095 -0.064 0}
+      endPoint Solid {
+        name "Leg41_1"
+        translation -0.2095 -0.064 0
+        physics Physics {density -1  mass 1.3}
+        children [
+          M3Shoulder{translation 0.07 0 0 }
+          M3Shoulder{rotation 0 0 1 1.57 }
+          DEF Leg42 HingeJoint{
+            device [
+              RotationalMotor {name "RRPitch" maxVelocity 23  maxTorque 21 controlPID 88 0 0.5 }
+              PositionSensor { name "RRPitchSensor" }
+            ]
+            jointParameters HingeJointParameters {axis 0 1 0 anchor 0 -0.0835 0}
+            endPoint Solid {
+              translation 0 -0.0835 0
+              physics Physics {density -1  mass 0.7}
+              children [
+                M3Shoulder{rotation 0 0 1 1.57 translation 0 0.03 0}
+                PADUK1LegUpper{}
+                DEF Leg43 HingeJoint{
+                  device [
+                    RotationalMotor {name "RRElbow" maxVelocity 23  maxTorque 35 controlPID 88 0 0.5  }
+                    PositionSensor { name "RRElbowSensor" }
+                  ]
+                  jointParameters HingeJointParameters {axis 0 1 0   anchor 0 0 -0.220}
+                  endPoint Solid {
+                    translation 0 0 -0.220
+                    physics Physics {density -1  mass 0.3}
+                    children [PADUK1LegLower{}]
+                    boundingObject Transform {
+                      #0.200, 14.07 degree
+                      translation -0.04862 0 -0.194
+                      children [Sphere {radius 0.020}]
+                    }
+                  }
+                }
+              ]
+              boundingObject Transform {
+                translation 0 0 0
+                children [Box {size 0.05 0.05 0.05}]
+              }
+            }
+          }
+        ]
+        boundingObject Transform {
+          translation 0 0 0
+          children [Box {size 0.05 0.05 0.05}]
+        }
+      }
+    }
+
+
+  ]
+  description "Naver M2 bot"
+  boundingObject Group {
+    children [
+      Transform {
+        translation 0 0 -0.0385
+        children [Box {size 0.278 0.17 0.077}]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [0 0 -0.045]
+    #centerOfMass [-0.10 0 -0.045]
+    inertiaMatrix [0.166204 0.418086 0.55459 0 0 0]
+  }
+  controller IS controller
+  controllerArgs IS controllerArgs
+}
+}

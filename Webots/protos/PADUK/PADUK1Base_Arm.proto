@@ -1,0 +1,22 @@
+PROTO PADUK1Base_Arm [
+  field SFRotation rotation 1 0 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation -0.372 0.085 0
+        rotation 0 0 1 3.1415
+        children[
+          Shape {
+            appearance Plastic{}
+            geometry DEF base_link Mesh {url "./meshes/base_link.stl"}
+          }
+        ]
+      }
+    ]
+  }
+}

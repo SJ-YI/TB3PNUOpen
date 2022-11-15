@@ -1,0 +1,23 @@
+PROTO M3Shoulder [
+  field SFRotation rotation 0 1 0 0
+  field SFVec3f translation 0 0 0
+]
+{
+  Transform {
+    rotation IS rotation
+    translation IS translation
+    children [
+      Transform{
+        translation 0 0 0
+        rotation 0 0 1 1.57
+        children[
+            Shape {
+            appearance BrushedAluminium{colorOverride 0.2 0.2 0.2}
+            geometry Cylinder {height 0.03 radius 0.048}
+          }
+        ]
+      }
+
+    ]
+  }
+}

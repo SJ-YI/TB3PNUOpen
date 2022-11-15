@@ -8,8 +8,6 @@ fsm.select = {}
 fsm.Motion = {}
 
 
--- Which FSMs should be enabled?
-
 if Config.send_motion_cmd then
   if ROBOT_TYPE=="1" then --Turtlebot with mecanum wheel
     fsm.enabled = {Motion = true,}

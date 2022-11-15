@@ -1,0 +1,23 @@
+PROTO PADUK1ArmLower [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+]
+{
+  Transform {
+    rotation IS rotation
+    #rotation 0 1 0 0.02
+    translation IS translation
+    children[
+      Transform{
+        translation -0.435 -0.085 0.105
+        rotation 0 1 0 3.1415
+        children[
+          Shape {
+            appearance Plastic{colorOverride 0.8 0.8 0.8}
+            geometry DEF Upper_Link_1 Mesh {url "./meshes/Upper_Link_1.stl"}
+          }
+        ]
+      }
+    ]
+  }
+}
