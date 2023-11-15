@@ -4,8 +4,11 @@
   <param name="robot_description" command="$(arg urdf_file)" />
   <arg name="rviz_file" value="$(find pnu_tb3open_launch)/config/tb3_minimal.rviz"/>
 
-  <!-- Robot state publisher -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+    <!-- Robot state publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="1000.0"/>
+    </node>
 
   <!--rviz  -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true"/>
