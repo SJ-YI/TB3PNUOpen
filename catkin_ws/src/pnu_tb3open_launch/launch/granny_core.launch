@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find pnu_tb3_launch)/urdf/turtlebot_armed_granny.urdf.xacro'" />
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find pnu_tb3open_launch)/urdf/turtlebot_armed_granny.urdf.xacro'" />
   <param name="robot_description" command="$(arg urdf_file)" />
 
  <!-- openCR interface -->

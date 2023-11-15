@@ -6,8 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <sys/time.h>
-
-
+#include <string>
 
 
 void ros_init(const char* node_name);

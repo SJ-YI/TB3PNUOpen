@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <robot name="turtlebot_armed_granny" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find pnu_tb3_launch)/urdf/common_properties.xacro"/>
+  <xacro:include filename="$(find pnu_tb3open_launch)/urdf/common_properties.xacro"/>
 
 
   <link name="base_footprint"/>
@@ -15,7 +15,7 @@
 
     <origin xyz="0 0 0.0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://pnu_tb3_launch/meshes/bases/burger_base.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://pnu_tb3open_launch/meshes/bases/burger_base.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="light_black"/>
 
@@ -52,7 +52,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/wheels/left_tire.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/wheels/left_tire.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -84,7 +84,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -117,7 +117,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/wheels/left_tire.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/wheels/left_tire.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -149,7 +149,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -203,7 +203,7 @@
     <visual>
       <origin xyz="0 0 0.0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/sensors/lds.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/sensors/lds.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -237,7 +237,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -245,7 +245,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -272,7 +272,7 @@
     <visual>
       <origin xyz="0 0 0.019" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -280,7 +280,7 @@
     <collision>
       <origin xyz="0 0 0.019" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -307,7 +307,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -315,7 +315,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -342,7 +342,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -350,7 +350,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -377,7 +377,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -385,7 +385,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -413,7 +413,7 @@
     <visual>
       <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link_grip_l.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link_grip_l.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -421,7 +421,7 @@
     <collision>
       <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link_grip_l.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link_grip_l.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -450,7 +450,7 @@
     <visual>
       <origin xyz="0.0 -0.0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link_grip_r.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link_grip_r.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -458,7 +458,7 @@
     <collision>
       <origin xyz="0.0 -0.0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://pnu_tb3_launch/meshes/manipulator/chain_link_grip_r.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://pnu_tb3open_launch/meshes/manipulator/chain_link_grip_r.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 

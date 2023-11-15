@@ -1,7 +1,7 @@
 <launch>
   <arg name="gui" default="true"/>
 
-  <!-- <arg name="rviz_file" value="$(find pnu_tb3_launch)/config/tb3_minimal.rviz"/>
+  <!-- <arg name="rviz_file" value="$(find pnu_tb3open_launch)/config/tb3_minimal.rviz"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true"/> -->
 
   <!-- map_server -->

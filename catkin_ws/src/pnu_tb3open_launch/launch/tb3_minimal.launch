@@ -1,10 +1,10 @@
 <launch>
   <arg name="gui" default="true"/>
   <arg name="model"/>
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find pnu_tb3_launch)/urdf/turtlebot3_burger.urdf.xacro'" />
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find pnu_tb3open_launch)/urdf/turtlebot3_burger.urdf.xacro'" />
 
   <param name="robot_description" command="$(arg urdf_file)" />
-  <arg name="rviz_file" value="$(find pnu_tb3_launch)/config/tb3_minimal.rviz"/>
+  <arg name="rviz_file" value="$(find pnu_tb3open_launch)/config/tb3_minimal.rviz"/>
   <!--rviz  -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true"/>
 
