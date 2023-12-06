@@ -8,6 +8,10 @@ local t_entry, t_update, t_debug,t_command
 local cmd_vel={0,0,0}
 
 
+local rossub=require'rossub'
+local sub_idx_cmdvel
+
+
 function state.entry()
   print(state._NAME..' Entry' )
   -- Update the time of entry
@@ -21,6 +25,8 @@ function state.entry()
   poseLast=wcm.get_robot_pose()
   hcm.set_base_teleop_t(0)
   hcm.set_base_velocity({0,0,0})
+  rossub.init('motioncontrol')
+  sub_idx_cmdvel=rossub.subscribeTwist('/cmd_vel')
 end
 
 local function get_motor_velocity()
@@ -58,6 +64,11 @@ function state.update()
   local t = Body.get_time()
   local dt = t - t_update -- Save this at the last update time
   t_update = t
+  local ret = rossub.checkTwist(sub_idx_cmdvel)
+  if ret and t-t_entry>1 then
+    hcm.set_base_velocity({ret[1],ret[2],ret[6]})
+    hcm.set_base_teleop_t(t)
+  end
   if IS_WEBOTS then move_base_webots(t,dt) end
 end
 

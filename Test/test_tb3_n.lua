@@ -29,49 +29,7 @@ local function update(key_code)
 
   local cmd_vel=false
   local cmd_motor=false
-  if Config.send_motion_cmd then
-
-    if key_char_lower==("i") then
-      print("forward")
-      rospub.cmdvel(0.1,0,0)
-    elseif key_char_lower==("k") then
-      print("stop")
-      rospub.cmdvel(0,0,0)
-    elseif key_char_lower==(",") then
-      print("backward")
-      rospub.cmdvel(-0.1,0,0)
-    elseif key_char_lower==("j") then
-      print("turn left")
-      rospub.cmdvel(0,0,0.3)
-    elseif key_char_lower==("l") then
-      print("turn right")
-      rospub.cmdvel(0,0,-0.3)
-    elseif key_char_lower==("h") then
-      print("slide left")
-      rospub.cmdvel(0,0.1,0)
-    elseif key_char_lower==(";") then
-      print("slide right")
-      rospub.cmdvel(0,-0.1,0)
-    elseif key_char_lower==("1") then
-      print("arm zero position")
-      rospub.joint_cmd(  seq,{"Arm1","Arm2","Arm3","Arm4"}, {0,0,0,0},{0,0,0,0})
-    elseif key_char_lower==("2") then
-      print("arm low position")
-      rospub.joint_cmd(  seq,{"Arm1","Arm2","Arm3","Arm4"}, {0,-45*DEG_TO_RAD,45*DEG_TO_RAD,0*DEG_TO_RAD},{0,0,0,0})
-    elseif key_char_lower==("[") then
-      print("grip open")
-      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {1,1},{0,0})
-    elseif key_char_lower==("]") then
-      print("grip close")
-      rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {-1,-1},{0,0})
-    end
-    seq=seq+1
-    return
-  end
-
-
-
-  if ROBOT_TYPE=="0" then
+  if ROBOT_TYPE=="0" then --Turtlebot Burger
     if key_char_lower==("i") then
       print("forward")
       rospub.joint_cmd(  seq,Config.jointNames, {0,0},{3,3})
@@ -88,7 +46,7 @@ local function update(key_code)
       print("turn right")
       rospub.joint_cmd(  seq,Config.jointNames, {0,0},{3,-3})
     end
-  else
+  elseif ROBOT_TYPE=="2" then --Home Service Challenge Bot
     if key_char_lower==("i") then
       print("forward")
       rospub.joint_cmd(  seq,{"wheel1","wheel2","wheel3","wheel4"}, {0,0,0,0},{-3,3,-3,3})
@@ -122,6 +80,16 @@ local function update(key_code)
     elseif key_char_lower==("]") then
       print("grip close")
       rospub.joint_cmd(  seq,{"GripperL","GripperR"}, {-1,-1},{0,0})
+    end
+  elseif ROBOT_TYPE=="3" then --PADUK
+    if key_char_lower==("1") then
+      rospub.joint_cmd(  seq,{"FLRoll","FLPitch","FLElbow",    "FRRoll","FRPitch","FRElbow",   "RLRoll","RLPitch","RLElbow",  "RRRoll","RRPitch","RRElbow"},
+            {0,0,-15*DEG_TO_RAD, 0,0,-15*DEG_TO_RAD,  0,0,-15*DEG_TO_RAD,  0,0,-15*DEG_TO_RAD,  },
+            {0,0,0, 0,0,0,  0,0,0,  0,0,0})
+    elseif key_char_lower==("2") then
+      rospub.joint_cmd(  seq,{"FLRoll","FLPitch","FLElbow",    "FRRoll","FRPitch","FRElbow",   "RLRoll","RLPitch","RLElbow",  "RRRoll","RRPitch","RRElbow"},
+            {0,45*DEG_TO_RAD,-105*DEG_TO_RAD, 0,45*DEG_TO_RAD,-105*DEG_TO_RAD,  0,45*DEG_TO_RAD,-105*DEG_TO_RAD,  0,45*DEG_TO_RAD,-105*DEG_TO_RAD,  },
+            {0,0,0, 0,0,0,  0,0,0,  0,0,0})
     end
   end
   seq=seq+1

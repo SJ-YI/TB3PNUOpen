@@ -8,7 +8,8 @@ local t_entry, t_update, t_debug,t_command
 local cmd_vel={0,0,0}
 
 local poseMoveStart={0,0,0}
-
+local rossub=require'rossub'
+local sub_idx_cmdvel
 
 function state.entry()
   print(state._NAME..' Entry' )
@@ -33,17 +34,18 @@ function state.entry()
   hcm.set_base_motorcmd_t(0)
   hcm.set_base_velocity({0,0,0})
   mcm.set_walk_vel({0,0,0})
+
+  rossub.init('motioncontrol')
+  sub_idx_cmdvel=rossub.subscribeTwist('/cmd_vel')
 end
 
 
-local function move_robot(cmd_vel)
+local function get_motor_velocity()
   local wheel_r = Config.wheels.r
   local wheel_wid = Config.wheels.wid
   local rps_limit = Config.wheels.rps_limit
   --FL FR RL RR
-
-
---print(unpack(cmd_vel))
+  local cmd_vel=hcm.get_base_velocity()
 
   mcm.set_walk_vel(cmd_vel)
   local fwd_component = vector.new({-1,1,-1,1})*cmd_vel[1]/wheel_r
@@ -61,23 +63,17 @@ local function move_robot(cmd_vel)
     rps[3]=rps[3]*rps_limit/rps_max
     rps[4]=rps[4]*rps_limit/rps_max
   end
-  Body.set_wheel_command_velocity(rps)
+  return rps
 end
 
 
 function move_base_webots(t,dt)
-  local t_real=unix.time()
   local t_last=hcm.get_base_teleop_t()
-  if(t_real-t_last<1.0) then
-    move_robot(hcm.get_base_velocity())
+  if(t-t_last<1.0) then
+    local motor_rpm=get_motor_velocity()
+    Body.set_wheel_command_velocity(motor_rpm) --in rpm
   else
-    local t_vel=hcm.get_base_velocity_t()
-    if(t_real-t_vel<0.2) then
-      move_robot(hcm.get_base_velocity())
-    else
-      mcm.set_walk_vel({0,0,0})
-      Body.set_wheel_command_velocity({0,0,0,0})
-    end
+    Body.set_wheel_command_velocity({0,0,0,0}) --in rpm
   end
 end
 
@@ -91,6 +87,12 @@ function state.update()
   -- local grip=hcm.get_base_grippertarget()
   -- Body.set_arm_command_position(hcm.get_base_armtarget())
   -- Body.set_gripper_command_torque({-grip,-grip})
+
+  local ret = rossub.checkTwist(sub_idx_cmdvel)
+  if ret and t-t_entry>1 then
+    hcm.set_base_velocity({ret[1],ret[2],ret[6]})
+    hcm.set_base_teleop_t(t)
+  end
   move_base_webots(t,dt)
 end
 
