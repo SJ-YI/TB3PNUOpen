@@ -4,3 +4,7 @@ catkin_ws/devel
 ./Webots/worlds/*.wbproj
 *.o
 *.so
+./Webots/controllers/gate/build/release/gate
+./Webots/controllers/gate/gate
+./Webots/controllers/trafficlight/trafficlight
+./Webots/controllers/turnsign/turnsign
